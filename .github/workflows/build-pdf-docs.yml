@@ -1,0 +1,116 @@
+name: Build LaTeX PDFs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.md'
+      - '.github/workflows/build-pdf-docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install LaTeX toolchain
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            pandoc latexmk texlive-luatex texlive-lang-japanese \
+            texlive-latex-extra texlive-fonts-recommended poppler-utils
+
+      - name: Convert Markdown to TeX and PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s globstar nullglob
+          rm -rf tex
+          mkdir -p tex
+          count=0
+          while IFS= read -r -d '' src; do
+            rel="${src#./}"
+            pdf="${rel%.md}.pdf"
+            tex="tex/${rel%.md}.tex"
+            mkdir -p "$(dirname "$pdf")" "$(dirname "$tex")"
+
+            tmp="$(mktemp --suffix=.md)"
+            python3 - "$src" "$tmp" <<'PY'
+import re
+import sys
+from pathlib import Path
+src, dst = map(Path, sys.argv[1:])
+text = src.read_text(encoding='utf-8')
+# Local Markdown links become links to the corresponding generated PDFs.
+text = re.sub(r'(?<=\()([^\n)]*?)\.md(?=(?:#[^\n)]*)?\))', r'\1.pdf', text)
+dst.write_text(text, encoding='utf-8')
+PY
+
+            pandoc "$tmp" \
+              --from=markdown+tex_math_dollars+tex_math_single_backslash+raw_tex+pipe_tables \
+              --to=latex \
+              --standalone \
+              --number-sections \
+              -V documentclass=ltjsarticle \
+              -V papersize=a4 \
+              -V fontsize=11pt \
+              -V geometry:margin=24mm \
+              -V colorlinks=true \
+              -V linkcolor=blue \
+              -V urlcolor=blue \
+              -o "$tex"
+            rm -f "$tmp"
+
+            build_dir="$(mktemp -d)"
+            latexmk -lualatex -interaction=nonstopmode -halt-on-error \
+              -outdir="$build_dir" "$tex"
+            built="$build_dir/$(basename "${tex%.tex}.pdf")"
+            test -s "$built"
+            cp "$built" "$pdf"
+            pdfinfo "$pdf" >/dev/null
+            pdftoppm -f 1 -singlefile -png -r 100 "$pdf" "$build_dir/render" >/dev/null 2>&1
+            test -s "$build_dir/render.png"
+            rm -rf "$build_dir"
+            rm "$src"
+            count=$((count + 1))
+          done < <(find . -type f -name '*.md' -not -path './tex/*' -not -path './.git/*' -print0)
+
+          echo "Converted $count Markdown files."
+          test "$count" -gt 0
+          test -z "$(find . -type f -name '*.md' -not -path './.git/*' -print -quit)"
+
+      - name: Verify generated document pairs
+        shell: bash
+        run: |
+          set -euo pipefail
+          pdf_count="$(find . -type f -name '*.pdf' -not -path './tex/*' | wc -l)"
+          tex_count="$(find tex -type f -name '*.tex' | wc -l)"
+          echo "PDFs: $pdf_count"
+          echo "TeX sources: $tex_count"
+          test "$pdf_count" -eq "$tex_count"
+          while IFS= read -r -d '' texfile; do
+            rel="${texfile#tex/}"
+            pdf="${rel%.tex}.pdf"
+            test -s "$pdf"
+          done < <(find tex -type f -name '*.tex' -print0)
+
+      - name: Commit generated PDFs and TeX sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No generated changes.'
+            exit 0
+          fi
+          git commit -m 'docs: replace Markdown with built LaTeX PDFs'
+          git push origin HEAD:main
