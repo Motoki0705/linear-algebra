@@ -31,7 +31,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          shopt -s globstar nullglob
           rm -rf tex
           mkdir -p tex
           count=0
@@ -42,16 +41,7 @@ jobs:
             mkdir -p "$(dirname "$pdf")" "$(dirname "$tex")"
 
             tmp="$(mktemp --suffix=.md)"
-            python3 - "$src" "$tmp" <<'PY'
-import re
-import sys
-from pathlib import Path
-src, dst = map(Path, sys.argv[1:])
-text = src.read_text(encoding='utf-8')
-# Local Markdown links become links to the corresponding generated PDFs.
-text = re.sub(r'(?<=\()([^\n)]*?)\.md(?=(?:#[^\n)]*)?\))', r'\1.pdf', text)
-dst.write_text(text, encoding='utf-8')
-PY
+            python3 -c 'import re,sys,pathlib; s=pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"); s=re.sub(r"(?<=\\()([^\\n)]*?)\\.md(?=(?:#[^\\n)]*)?\\))", r"\\1.pdf", s); pathlib.Path(sys.argv[2]).write_text(s, encoding="utf-8")' "$src" "$tmp"
 
             pandoc "$tmp" \
               --from=markdown+tex_math_dollars+tex_math_single_backslash+raw_tex+pipe_tables \
