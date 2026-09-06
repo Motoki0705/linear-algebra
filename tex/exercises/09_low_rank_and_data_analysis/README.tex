@@ -1,0 +1,103 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6f14ux7fd2-09-ux4f4eux30e9ux30f3ux30afux8fd1ux4f3cux3068ux30c7ux30fcux30bfux89e3ux6790}{%
+\section{演習 09 ---
+低ランク近似とデータ解析}\label{ux6f14ux7fd2-09-ux4f4eux30e9ux30f3ux30afux8fd1ux4f3cux3068ux30c7ux30fcux30bfux89e3ux6790}}
+
+\hypertarget{rank-k-ux8fd1ux4f3c}{%
+\subsection{1. rank-k 近似}\label{rank-k-ux8fd1ux4f3c}}
+
+特異値が \texttt{(10,3,1,0.1)} の行列について rank-2 近似の Frobenius
+誤差を求めてください。
+
+\hypertarget{ux30a8ux30cdux30ebux30aeux30fcux4fddux6301ux7387}{%
+\subsection{2.
+エネルギー保持率}\label{ux30a8ux30cdux30ebux30aeux30fcux4fddux6301ux7387}}
+
+同じ特異値について、rank-2 近似が
+\texttt{\textbar{}\textbar{}A\textbar{}\textbar{}\_F\^{}2}
+の何割を保持するか求めてください。
+
+\hypertarget{pca}{%
+\subsection{3. PCA}\label{pca}}
+
+中心化データ \texttt{X\_c} に対して共分散行列が
+\texttt{(1/(n-1))X\_c\^{}TX\_c} となることを確認し、SVD
+から主成分方向を導いてください。
+
+\hypertarget{pca-ux306eux4e8cux3064ux306eux5b9aux7fa9}{%
+\subsection{4. PCA
+の二つの定義}\label{pca-ux306eux4e8cux3064ux306eux5b9aux7fa9}}
+
+「射影後の分散最大化」と「再構成誤差最小化」が同じ主成分を与える理由を説明してください。
+
+\hypertarget{ux30ceux30a4ux30baux9664ux53bb}{%
+\subsection{5. ノイズ除去}\label{ux30ceux30a4ux30baux9664ux53bb}}
+
+truncated SVD で \texttt{k}
+を小さくしすぎる場合と大きくしすぎる場合に、それぞれ何が起こるか説明してください。
+
+\end{document}

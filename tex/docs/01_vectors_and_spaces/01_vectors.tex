@@ -1,0 +1,133 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux30d9ux30afux30c8ux30eb}{%
+\section{ベクトル}\label{ux30d9ux30afux30c8ux30eb}}
+
+ベクトルはしばしば「向きと大きさを持つ矢印」と説明されます。しかし線形代数では、より本質的に
+\textbf{加法とスカラー倍ができる対象} と考えます。
+
+\[
+x+y,\qquad \alpha x
+\]
+
+が同じ種類の対象として定義できることが重要です。
+
+\hypertarget{ux5ea7ux6a19ux306fux30d9ux30afux30c8ux30ebux305dux306eux3082ux306eux3067ux306fux306aux3044}{%
+\subsection{座標はベクトルそのものではない}\label{ux5ea7ux6a19ux306fux30d9ux30afux30c8ux30ebux305dux306eux3082ux306eux3067ux306fux306aux3044}}
+
+\[
+x=\begin{bmatrix}2\\3\end{bmatrix}
+\]
+
+という数の並びは、ある基底を選んだときの座標です。基底を変えれば同じ幾何学的ベクトルでも座標は変わります。
+
+この区別は後の
+
+\begin{itemize}
+\tightlist
+\item
+  基底変換
+\item
+  固有ベクトル
+\item
+  PCA
+\item
+  SVD
+\end{itemize}
+
+に直結します。
+
+\hypertarget{ux30d9ux30afux30c8ux30ebux3068ux3057ux3066ux6271ux3048ux308bux3082ux306e}{%
+\subsection{ベクトルとして扱えるもの}\label{ux30d9ux30afux30c8ux30ebux3068ux3057ux3066ux6271ux3048ux308bux3082ux306e}}
+
+ベクトルは数の列に限りません。
+
+\begin{itemize}
+\tightlist
+\item
+  多項式
+\item
+  関数
+\item
+  画像
+\item
+  音声波形
+\item
+  行列
+\end{itemize}
+
+なども、加法とスカラー倍についてベクトル空間を作れます。
+
+例えば画像を \texttt{m×n} 個の画素値として見れば、一枚の画像は
+\texttt{R\^{}\{mn\}} のベクトルと考えられます。この視点が PCA
+や画像圧縮につながります。
+
+\hypertarget{ux7406ux89e3ux30c1ux30a7ux30c3ux30af}{%
+\subsection{理解チェック}\label{ux7406ux89e3ux30c1ux30a7ux30c3ux30af}}
+
+「ベクトル」と「その座標」の違いを説明できますか。これを説明できることが、後の基底概念の出発点です。
+
+\end{document}

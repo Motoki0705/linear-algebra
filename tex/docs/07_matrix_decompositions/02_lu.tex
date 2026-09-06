@@ -1,0 +1,131 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{lu-ux5206ux89e3}{%
+\section{LU 分解}\label{lu-ux5206ux89e3}}
+
+LU 分解は
+
+\[
+A=LU
+\]
+
+と行列を下三角行列 \texttt{L} と上三角行列 \texttt{U} に分ける方法です。
+
+実際には行交換を伴うため
+
+\[
+PA=LU
+\]
+
+と書くことが多いです。
+
+\hypertarget{gauss-ux6d88ux53bbux6cd5ux3068ux306eux95a2ux4fc2}{%
+\subsection{Gauss
+消去法との関係}\label{gauss-ux6d88ux53bbux6cd5ux3068ux306eux95a2ux4fc2}}
+
+\texttt{U} は \texttt{A} に Gauss 消去を施した結果であり、\texttt{L}
+は消去で使った係数を記録しています。
+
+つまり LU 分解は、Gauss
+消去そのものを「再利用可能な形」で保存したものです。
+
+\hypertarget{ux306aux305cux4fbfux5229ux304b}{%
+\subsection{なぜ便利か}\label{ux306aux305cux4fbfux5229ux304b}}
+
+\[
+Ax=b
+\]
+
+に \texttt{A=LU} を代入すると
+
+\[
+LUx=b
+\]
+
+なので、まず
+
+\[
+Ly=b
+\]
+
+を前進代入で解き、その後
+
+\[
+Ux=y
+\]
+
+を後退代入で解けます。
+
+同じ \texttt{A} に対して複数の \texttt{b} を解く場合、LU
+分解を一度だけ計算すれば使い回せます。
+
+\hypertarget{svd-ux3068ux306eux9055ux3044}{%
+\subsection{SVD との違い}\label{svd-ux3068ux306eux9055ux3044}}
+
+LU は主に計算効率のための分解です。SVD
+のように直交方向や特異値から幾何学を直接読み取るものではありません。
+
+\end{document}

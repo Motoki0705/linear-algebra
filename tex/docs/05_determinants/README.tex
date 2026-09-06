@@ -1,0 +1,113 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{chapter-05-ux884cux5217ux5f0f}{%
+\section{Chapter 05 --- 行列式}\label{chapter-05-ux884cux5217ux5f0f}}
+
+行列式は公式展開が目立つため、線形代数で最も意味を見失いやすい概念の一つです。
+
+\hypertarget{ux4e00ux3064ux306eux610fux5473ux306bux56faux5b9aux3059ux308b}{%
+\subsection{一つの意味に固定する}\label{ux4e00ux3064ux306eux610fux5473ux306bux56faux5b9aux3059ux308b}}
+
+まず
+
+\[
+\det A=\text{向き付き体積の倍率}
+\]
+
+と理解してください。
+
+この一つの解釈から多くの性質が自然になります。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{det\ A=0}: 体積が潰れた → 次元が落ちた → 非可逆
+\item
+  \texttt{det(AB)=det\ A\ det\ B}: 二つの変換の体積倍率は積
+\item
+  負の determinant: 向きが反転
+\end{itemize}
+
+\hypertarget{svd-ux3068ux306eux95a2ux4fc2}{%
+\subsection{SVD との関係}\label{svd-ux3068ux306eux95a2ux4fc2}}
+
+\[
+|\det A|=\prod_i\sigma_i
+\]
+
+です。SVD で各直交軸を \texttt{σ\_i}
+倍するので、体積はその積だけ変わります。
+
+ここで「行列式が小さい」と「条件数が大きい」を混同しないことが重要です。全方向を一様に
+\texttt{10\^{}\{-6\}} 倍する行列は determinant
+は小さいですが、方向間の歪みがないため条件数は1です。
+
+\hypertarget{ux5230ux9054ux57faux6e96}{%
+\subsection{到達基準}\label{ux5230ux9054ux57faux6e96}}
+
+余因子展開を知らなくても、行列式が0になることとランク落ち・非可逆性の関係を幾何学的に説明できる状態を目指します。
+
+\end{document}

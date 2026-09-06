@@ -1,0 +1,117 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6f14ux7fd2-07-ux884cux5217ux5206ux89e3}{%
+\section{演習 07 ---
+行列分解}\label{ux6f14ux7fd2-07-ux884cux5217ux5206ux89e3}}
+
+\hypertarget{lu}{%
+\subsection{1. LU}\label{lu}}
+
+\[
+A=\begin{bmatrix}2&1\\4&3\end{bmatrix}
+\]
+
+を \texttt{LU} 分解してください。
+
+\hypertarget{qr}{%
+\subsection{2. QR}\label{qr}}
+
+\[
+A=\begin{bmatrix}1&1\\1&0\\0&1\end{bmatrix}
+\]
+
+の列に Gram--Schmidt を適用して reduced QR 分解を求めてください。
+
+\hypertarget{svd-ux306eux57faux672cux5f0f}{%
+\subsection{3. SVD の基本式}\label{svd-ux306eux57faux672cux5f0f}}
+
+\texttt{A=UΣV\^{}T} から
+
+\[
+A^TA=VΣ^TΣV^T
+\]
+
+を導出してください。
+
+\hypertarget{ux30e9ux30f3ux30af}{%
+\subsection{4. ランク}\label{ux30e9ux30f3ux30af}}
+
+SVD から \texttt{rank(A)}
+が非零特異値の個数であることを説明してください。
+
+\hypertarget{ux5e7eux4f55}{%
+\subsection{5. 幾何}\label{ux5e7eux4f55}}
+
+\texttt{A}
+が単位球を楕円体へ写すとき、右特異ベクトル、左特異ベクトル、特異値がそれぞれ何を意味するか説明してください。
+
+\hypertarget{ux6bd4ux8f03}{%
+\subsection{6. 比較}\label{ux6bd4ux8f03}}
+
+固有値分解と SVD
+の相違点を「対象行列」「基底」「値の符号」「幾何学」の4観点から整理してください。
+
+\end{document}

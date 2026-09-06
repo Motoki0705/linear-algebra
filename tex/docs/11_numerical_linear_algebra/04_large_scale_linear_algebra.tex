@@ -1,0 +1,106 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux5927ux898fux6a21ux7ddaux5f62ux4ee3ux6570}{%
+\section{大規模線形代数}\label{ux5927ux898fux6a21ux7ddaux5f62ux4ee3ux6570}}
+
+現代のデータでは \texttt{A}
+が数百万×数百万規模になることがあります。このとき完全な分解ではなく、必要な情報だけを近似的に求めます。
+
+\hypertarget{ux4ee3ux8868ux7684ux306aux8003ux3048ux65b9}{%
+\subsection{代表的な考え方}\label{ux4ee3ux8868ux7684ux306aux8003ux3048ux65b9}}
+
+\begin{itemize}
+\tightlist
+\item
+  sparse matrix: 0 を保存しない
+\item
+  matrix-free method: \texttt{A} 自体を作らず \texttt{Ax} だけ実装する
+\item
+  randomized SVD: 上位特異部分空間をランダム射影で近似する
+\item
+  Lanczos / Arnoldi: 少数の主要固有値・特異値を求める
+\end{itemize}
+
+\hypertarget{ux539fux7406ux306fux5909ux308fux3089ux306aux3044}{%
+\subsection{原理は変わらない}\label{ux539fux7406ux306fux5909ux308fux3089ux306aux3044}}
+
+大規模化しても、求めたいものは
+
+\begin{itemize}
+\tightlist
+\item
+  主要な部分空間
+\item
+  ランク構造
+\item
+  固有方向
+\item
+  最小二乗解
+\end{itemize}
+
+です。基礎線形代数の概念がそのままアルゴリズム設計の指針になります。
+
+\end{document}

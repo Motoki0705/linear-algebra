@@ -1,0 +1,110 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux30e9ux30f3ux30af}{%
+\section{ランク}\label{ux30e9ux30f3ux30af}}
+
+行列 \texttt{A} のランクは像の次元です。
+
+\[
+\operatorname{rank}(A)=\dim\operatorname{Im}(A)
+\]
+
+\hypertarget{ux76f4ux611f}{%
+\subsection{直感}\label{ux76f4ux611f}}
+
+ランクは「この線形変換が何次元分の独立な情報を出力へ運べるか」を表します。
+
+例えば \texttt{R\^{}3→R\^{}3}
+の写像でも、すべての点を一つの平面へ潰すならランクは2です。一本の直線へ潰すならランクは1です。
+
+\hypertarget{ux540cux5024ux306aux5b9aux7fa9}{%
+\subsection{同値な定義}\label{ux540cux5024ux306aux5b9aux7fa9}}
+
+ランクは
+
+\begin{itemize}
+\tightlist
+\item
+  独立な列の最大本数
+\item
+  独立な行の最大本数
+\item
+  pivot の数
+\item
+  非零特異値の数
+\end{itemize}
+
+のいずれでも求められます。
+
+最後の見方から
+
+\[
+\operatorname{rank}(A)=\#\{\sigma_i>0\}
+\]
+
+となり、SVD と直接つながります。
+
+\end{document}

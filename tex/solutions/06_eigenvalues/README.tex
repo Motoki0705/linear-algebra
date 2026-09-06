@@ -1,0 +1,124 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-06-ux56faux6709ux5024}{%
+\section{解答 06 --- 固有値}\label{ux89e3ux7b54-06-ux56faux6709ux5024}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+特性方程式は
+
+\[
+(2-\lambda)^2-1=0
+\]
+
+なので \texttt{λ=3,1}。対応する正規化固有ベクトルは
+
+\[
+v_1=\frac1{\sqrt2}(1,1)^T,\quad v_2=\frac1{\sqrt2}(1,-1)^T.
+\]
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+\texttt{Q={[}v\_1\ v\_2{]}}, \texttt{Λ=diag(3,1)} とすれば
+\texttt{A=QΛQ\^{}T} です。
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+\[
+A^kx_0=c_13^kv_1+c_2v_2.
+\]
+
+\texttt{c\_1≠0} なら大きな \texttt{k} では最大絶対固有値に対応する
+\texttt{v\_1} 方向が支配します。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+\texttt{Av=λv}, \texttt{Aw=μw} とします。対称性より
+
+\[
+v^TAw=(Av)^Tw.
+\]
+
+左辺は \texttt{μv\^{}Tw}、右辺は \texttt{λv\^{}Tw}。\texttt{λ≠μ} なので
+\texttt{v\^{}Tw=0} です。
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+任意の \texttt{x} に対し
+
+\[
+x^TA^TAx=\|Ax\|^2\ge0.
+\]
+
+よって \texttt{A\^{}TA}
+は半正定値で、すべての固有値は非負です。この平方根が特異値になります。
+
+\end{document}

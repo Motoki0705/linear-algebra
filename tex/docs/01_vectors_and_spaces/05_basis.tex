@@ -1,0 +1,111 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux57faux5e95}{%
+\section{基底}\label{ux57faux5e95}}
+
+ベクトル集合が空間 \texttt{V} の基底であるとは、
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{V} を張る
+\item
+  一次独立である
+\end{enumerate}
+
+の両方を満たすことです。
+
+\hypertarget{ux57faux5e95ux3068ux306fux5ea7ux6a19ux7cfbux3067ux3042ux308b}{%
+\subsection{基底とは座標系である}\label{ux57faux5e95ux3068ux306fux5ea7ux6a19ux7cfbux3067ux3042ux308b}}
+
+基底 \texttt{B=\{b\_1,...,b\_n\}} を選ぶと、任意の \texttt{v∈V} は一意に
+
+\[
+v=c_1b_1+\cdots+c_nb_n
+\]
+
+と表せます。
+
+係数
+
+\[
+[c_1,\dots,c_n]^\top
+\]
+
+が基底 \texttt{B} における \texttt{v} の座標です。
+
+\hypertarget{ux306aux305cux57faux5e95ux3092ux5909ux3048ux308bux306eux304b}{%
+\subsection{なぜ基底を変えるのか}\label{ux306aux305cux57faux5e95ux3092ux5909ux3048ux308bux306eux304b}}
+
+標準基底が常に最も理解しやすいとは限りません。線形写像に適した基底を選ぶと、複雑な行列が対角行列などの単純な形になります。
+
+固有値分解は「固有ベクトルを基底として選ぶ」操作、SVD
+は入力空間と出力空間でそれぞれ最適な直交基底を選ぶ操作だと理解できます。
+
+この意味で、基底は線形代数の中心概念です。
+
+\end{document}

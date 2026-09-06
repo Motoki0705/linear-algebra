@@ -1,0 +1,215 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux7ddaux5f62ux4ee3ux6570ux306eux5168ux4f53ux5730ux56f3}{%
+\section{線形代数の全体地図}\label{ux7ddaux5f62ux4ee3ux6570ux306eux5168ux4f53ux5730ux56f3}}
+
+線形代数を一言で表すと、\textbf{ベクトル空間と、その間を結ぶ線形写像を研究する学問}です。行列はその線形写像を座標で表現したものにすぎません。
+
+\hypertarget{ux3064ux306eux4e2dux5fc3ux30c6ux30fcux30de}{%
+\subsection{3つの中心テーマ}\label{ux3064ux306eux4e2dux5fc3ux30c6ux30fcux30de}}
+
+\hypertarget{ux7a7aux9593ux306eux69cbux9020}{%
+\subsubsection{1. 空間の構造}\label{ux7a7aux9593ux306eux69cbux9020}}
+
+ベクトル、一次結合、span、一次独立、基底、次元を通して、「どの方向が本当に独立な情報なのか」を調べます。
+
+\hypertarget{ux7ddaux5f62ux5199ux50cfux306eux69cbux9020}{%
+\subsubsection{2.
+線形写像の構造}\label{ux7ddaux5f62ux5199ux50cfux306eux69cbux9020}}
+
+\texttt{Ax}
+は単なる行列計算ではなく、ある空間から別の空間への写像です。核
+\texttt{ker(A)} は消えてしまう方向、像 \texttt{Im(A)}
+は実際に到達できる方向です。
+
+\hypertarget{ux826fux3044ux5ea7ux6a19ux7cfbux3067ux898bux308b}{%
+\subsubsection{3.
+良い座標系で見る}\label{ux826fux3044ux5ea7ux6a19ux7cfbux3067ux898bux308b}}
+
+同じ線形写像でも、基底を変えると行列の見え方が変わります。固有値分解や
+SVD は、線形変換を理解しやすい座標系へ移してから観察する方法です。
+
+\hypertarget{ux5b66ux7fd2ux306eux5927ux304dux306aux6d41ux308c}{%
+\subsection{学習の大きな流れ}\label{ux5b66ux7fd2ux306eux5927ux304dux306aux6d41ux308c}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ベクトル空間}
+\NormalTok{  ↓}
+\NormalTok{基底・次元}
+\NormalTok{  ↓}
+\NormalTok{線形写像・行列}
+\NormalTok{  ↓}
+\NormalTok{核・像・ランク}
+\NormalTok{  ↓}
+\NormalTok{内積・直交・射影}
+\NormalTok{  ↓}
+\NormalTok{固有値・固有ベクトル}
+\NormalTok{  ↓}
+\NormalTok{行列分解}
+\NormalTok{  ├─ LU}
+\NormalTok{  ├─ QR}
+\NormalTok{  ├─ 固有値分解}
+\NormalTok{  └─ SVD}
+\NormalTok{       ↓}
+\NormalTok{   最小二乗・擬似逆}
+\NormalTok{       ↓}
+\NormalTok{   PCA・低ランク近似}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{svd-ux306fux3069ux3053ux306bux4f4dux7f6eux3059ux308bux304b}{%
+\subsection{SVD
+はどこに位置するか}\label{svd-ux306fux3069ux3053ux306bux4f4dux7f6eux3059ux308bux304b}}
+
+SVD
+
+\[
+A=U\Sigma V^\top
+\]
+
+は、入力側の直交基底 \texttt{V}、各方向の伸縮量
+\texttt{Σ}、出力側の直交基底 \texttt{U} に線形写像を分解します。
+
+したがって SVD を本当に理解するには、少なくとも次が必要です。
+
+\begin{itemize}
+\tightlist
+\item
+  基底と座標
+\item
+  線形写像
+\item
+  ランク
+\item
+  内積と直交
+\item
+  固有値と対称行列
+\end{itemize}
+
+SVD
+は線形代数の入口ではなく、前半で学んだ概念が一つに集約される地点だと考えてください。
+
+\hypertarget{ux5230ux9054ux76eeux6a19}{%
+\subsection{到達目標}\label{ux5230ux9054ux76eeux6a19}}
+
+最終的には、公式を見て計算するだけでなく、行列を見たときに
+
+\begin{itemize}
+\tightlist
+\item
+  何次元の情報が保存されるか
+\item
+  どの方向が消えるか
+\item
+  どの方向が大きく伸びるか
+\item
+  逆問題が安定か
+\item
+  低次元近似が可能か
+\end{itemize}
+
+を幾何学的に説明できることを目標にします。
+
+\end{document}

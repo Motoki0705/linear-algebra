@@ -1,0 +1,127 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{chapter-08-ux6700ux5c0fux4e8cux4e57ux3068ux9006ux554fux984c}{%
+\section{Chapter 08 ---
+最小二乗と逆問題}\label{chapter-08-ux6700ux5c0fux4e8cux4e57ux3068ux9006ux554fux984c}}
+
+現実のデータでは \texttt{Ax=b}
+が完全には成立しないことが普通です。観測ノイズ、モデル誤差、過剰な方程式があるからです。
+
+\hypertarget{ux89e3ux304fux304bux3089ux6700ux3082ux8fd1ux3044ux3082ux306eux3092ux63a2ux3059ux3078}{%
+\subsection{「解く」から「最も近いものを探す」へ}\label{ux89e3ux304fux304bux3089ux6700ux3082ux8fd1ux3044ux3082ux306eux3092ux63a2ux3059ux3078}}
+
+\[
+\min_x\|Ax-b\|^2
+\]
+
+という問題に切り替えます。
+
+これは \texttt{b} を \texttt{Col(A)}
+へ直交射影することです。したがって最小二乗は、最適化の公式より前に幾何学として理解できます。
+
+\hypertarget{ux6b63ux898fux65b9ux7a0bux5f0fux306eux610fux5473}{%
+\subsection{正規方程式の意味}\label{ux6b63ux898fux65b9ux7a0bux5f0fux306eux610fux5473}}
+
+\[
+A^TAx=A^Tb
+\]
+
+は、残差 \texttt{r=b-Ax} に対して
+
+\[
+A^Tr=0
+\]
+
+すなわち「残差がすべての列方向に直交する」と言っているだけです。
+
+\hypertarget{ux9006ux554fux984cux306eux96e3ux3057ux3055}{%
+\subsection{逆問題の難しさ}\label{ux9006ux554fux984cux306eux96e3ux3057ux3055}}
+
+SVD 座標で逆算すると
+
+\[
+x=A^+b=\sum_i\frac{u_i^Tb}{\sigma_i}v_i.
+\]
+
+小さい \texttt{σ\_i} があると、その方向では観測誤差まで巨大化します。
+
+この式は、なぜ悪条件問題で単純な逆算が危険かを直接示しています。
+
+\hypertarget{ux6b63ux5247ux5316ux3068ux3044ux3046ux8003ux3048ux65b9}{%
+\subsection{正則化という考え方}\label{ux6b63ux5247ux5316ux3068ux3044ux3046ux8003ux3048ux65b9}}
+
+truncated SVD
+は小さすぎる特異値を捨てます。これは情報を減らす行為ですが、結果として推定が良くなることがあります。
+
+「完全に逆にする」より「信頼できる方向だけ逆にする」方がよい場合がある、という逆問題の重要思想です。
+
+\hypertarget{ux5230ux9054ux57faux6e96}{%
+\subsection{到達基準}\label{ux5230ux9054ux57faux6e96}}
+
+最小二乗、擬似逆、条件数、正則化を別々の公式としてではなく、SVD
+の各特異方向で何が起こるかとして説明してください。
+
+\end{document}

@@ -1,0 +1,151 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux5b66ux7fd2ux7d4cux8def}{%
+\section{学習経路}\label{ux5b66ux7fd2ux7d4cux8def}}
+
+\hypertarget{stage-1-ux7a7aux9593ux3092ux7406ux89e3ux3059ux308b}{%
+\subsection{Stage 1:
+空間を理解する}\label{stage-1-ux7a7aux9593ux3092ux7406ux89e3ux3059ux308b}}
+
+\texttt{01\_vectors\_and\_spaces}
+では、ベクトルを矢印としてだけでなく、加法とスカラー倍ができる対象として捉えます。
+
+到達目標は、\texttt{span}、一次独立、基底、次元を自分の言葉で説明できることです。
+
+\hypertarget{stage-2-ux884cux5217ux3092ux5199ux50cfux3068ux3057ux3066ux7406ux89e3ux3059ux308b}{%
+\subsection{Stage 2:
+行列を写像として理解する}\label{stage-2-ux884cux5217ux3092ux5199ux50cfux3068ux3057ux3066ux7406ux89e3ux3059ux308b}}
+
+\texttt{02\_matrices\_and\_linear\_maps}
+では、行列積を計算規則ではなく写像の合成として捉えます。
+
+特に
+
+\[
+\dim\ker A+\operatorname{rank}(A)=n
+\]
+
+が「入力の自由度が、消える方向と残る方向に分かれる」という意味を持つことを理解します。
+
+\hypertarget{stage-3-ux65b9ux7a0bux5f0fux3092ux7a7aux9593ux3068ux3057ux3066ux7406ux89e3ux3059ux308b}{%
+\subsection{Stage 3:
+方程式を空間として理解する}\label{stage-3-ux65b9ux7a0bux5f0fux3092ux7a7aux9593ux3068ux3057ux3066ux7406ux89e3ux3059ux308b}}
+
+\texttt{Ax=b} は数値を求める問題であると同時に、\texttt{b}
+が列空間に入っているかを問う問題です。
+
+Gauss
+消去を「アルゴリズム」としてだけでなく、「解空間の構造を露出させる操作」として学びます。
+
+\hypertarget{stage-4-ux5e7eux4f55ux5b66ux3092ux5165ux308cux308b}{%
+\subsection{Stage 4:
+幾何学を入れる}\label{stage-4-ux5e7eux4f55ux5b66ux3092ux5165ux308cux308b}}
+
+内積を導入すると、長さ・角度・直交・最短距離を定義できます。ここから射影と最小二乗が自然に出てきます。
+
+\hypertarget{stage-5-ux7ddaux5f62ux5909ux63dbux306eux4e0dux5909ux306aux65b9ux5411ux3092ux63a2ux3059}{%
+\subsection{Stage 5:
+線形変換の不変な方向を探す}\label{stage-5-ux7ddaux5f62ux5909ux63dbux306eux4e0dux5909ux306aux65b9ux5411ux3092ux63a2ux3059}}
+
+固有値・固有ベクトルは
+
+\[
+Av=\lambda v
+\]
+
+を満たす特別な方向です。ここで「良い基底を選ぶと変換が単純になる」という考え方を身につけます。
+
+\hypertarget{stage-6-ux5206ux89e3ux3059ux308b}{%
+\subsection{Stage 6: 分解する}\label{stage-6-ux5206ux89e3ux3059ux308b}}
+
+LU、QR、固有値分解、SVD を比較します。特に SVD
+は一般の長方形行列にも使え、ランク・最小二乗・擬似逆・低ランク近似を統一します。
+
+\hypertarget{ux5b66ux7fd2ux65b9ux6cd5}{%
+\subsection{学習方法}\label{ux5b66ux7fd2ux65b9ux6cd5}}
+
+各節で次の順序を守ることを推奨します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  定義を読む。
+\item
+  図形的・構造的な意味を言葉で説明する。
+\item
+  数式を自力で導出する。
+\item
+  小さな行列で手計算する。
+\item
+  演習を解く。
+\item
+  NumPy で検算する。
+\end{enumerate}
+
+計算だけ解けても、定義の意味を説明できなければ次に進まないのが理想です。
+
+\end{document}

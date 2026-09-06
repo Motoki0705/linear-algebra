@@ -1,0 +1,137 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{chapter-09-ux4f4eux30e9ux30f3ux30afux69cbux9020pcaux5727ux7e2e}{%
+\section{Chapter 09 ---
+低ランク構造・PCA・圧縮}\label{chapter-09-ux4f4eux30e9ux30f3ux30afux69cbux9020pcaux5727ux7e2e}}
+
+この章では「高次元に見えるデータが、実は少数の方向でほとんど説明できる」という考えを扱います。
+
+\hypertarget{rank-ux306fux81eaux7531ux5ea6ux3092ux6e2cux308b}{%
+\subsection{rank
+は自由度を測る}\label{rank-ux306fux81eaux7531ux5ea6ux3092ux6e2cux308b}}
+
+行列の rank が \texttt{r} なら、その列や行に含まれる独立方向は
+\texttt{r} 個だけです。
+
+現実のデータは厳密には full rank でも、特異値が
+
+\[
+100,20,5,0.1,0.01,\dots
+\]
+
+のように急減することがあります。この場合「近似的には低ランク」と考えられます。
+
+\hypertarget{svd-ux304cux6700ux826fux8fd1ux4f3cux3092ux4e0eux3048ux308b}{%
+\subsection{SVD
+が最良近似を与える}\label{svd-ux304cux6700ux826fux8fd1ux4f3cux3092ux4e0eux3048ux308b}}
+
+\[
+A_k=\sum_{i=1}^k\sigma_iu_iv_i^T
+\]
+
+は rank≤k の中で最良の近似です。
+
+つまり「上位特異値を残す」は便利な経験則ではなく、明確な最適性定理を持っています。
+
+\hypertarget{pca-ux306fux4f55ux3092ux3057ux3066ux3044ux308bux306eux304b}{%
+\subsection{PCA
+は何をしているのか}\label{pca-ux306fux4f55ux3092ux3057ux3066ux3044ux308bux306eux304b}}
+
+中心化データに対して PCA は
+
+\begin{itemize}
+\tightlist
+\item
+  射影後の分散を最大にする方向を探す
+\item
+  再構成誤差を最小にする低次元部分空間を探す
+\end{itemize}
+
+という二つの等価な問題です。
+
+SVD によってこの二つが一つにつながります。
+
+\hypertarget{ux5727ux7e2eux3068ux30ceux30a4ux30baux9664ux53bb}{%
+\subsection{圧縮とノイズ除去}\label{ux5727ux7e2eux3068ux30ceux30a4ux30baux9664ux53bb}}
+
+どちらも小さい特異成分を捨てますが、意味は異なります。
+
+\begin{itemize}
+\tightlist
+\item
+  圧縮: 少数パラメータで近似する
+\item
+  denoising: 小さい成分を主にノイズと仮定する
+\end{itemize}
+
+後者にはモデル仮定があり、弱い信号まで消す危険があります。
+
+\hypertarget{ux5230ux9054ux57faux6e96}{%
+\subsection{到達基準}\label{ux5230ux9054ux57faux6e96}}
+
+「次元削減とは単に列数を減らすことではなく、データの主要部分空間を見つけること」と説明できることを目標にします。
+
+\end{document}

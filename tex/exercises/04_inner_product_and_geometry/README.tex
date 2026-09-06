@@ -1,0 +1,100 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6f14ux7fd2-04-ux5185ux7a4dux76f4ux4ea4ux5c04ux5f71}{%
+\section{演習 04 ---
+内積・直交・射影}\label{ux6f14ux7fd2-04-ux5185ux7a4dux76f4ux4ea4ux5c04ux5f71}}
+
+\hypertarget{ux89d2ux5ea6}{%
+\subsection{1. 角度}\label{ux89d2ux5ea6}}
+
+\texttt{x=(1,1)\^{}T}, \texttt{y=(1,0)\^{}T} のなす角を求めてください。
+
+\hypertarget{ux5c04ux5f71}{%
+\subsection{2. 射影}\label{ux5c04ux5f71}}
+
+\texttt{b=(3,2)\^{}T} を \texttt{a=(1,1)\^{}T}
+が張る直線へ直交射影してください。
+
+\hypertarget{ux5c04ux5f71ux884cux5217}{%
+\subsection{3. 射影行列}\label{ux5c04ux5f71ux884cux5217}}
+
+単位ベクトル \texttt{q} に対し \texttt{P=qq\^{}T} が \texttt{P\^{}2=P}
+と \texttt{P\^{}T=P} を満たすことを示してください。
+
+\hypertarget{gramschmidt}{%
+\subsection{4. Gram--Schmidt}\label{gramschmidt}}
+
+\texttt{a\_1=(1,1,0)\^{}T}, \texttt{a\_2=(1,0,1)\^{}T}
+を正規直交化してください。
+
+\hypertarget{ux6700ux5c0fux4e8cux4e57ux3078ux306eux6a4b}{%
+\subsection{5.
+最小二乗への橋}\label{ux6700ux5c0fux4e8cux4e57ux3078ux306eux6a4b}}
+
+最小二乗解で残差 \texttt{r=b-Ax} が \texttt{Col(A)}
+に直交しなければならない理由を、最短距離の観点から説明してください。
+
+\end{document}

@@ -1,0 +1,210 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux7279ux7570ux5024ux5206ux89e3svd}{%
+\section{特異値分解（SVD）}\label{ux7279ux7570ux5024ux5206ux89e3svd}}
+
+任意の実行列
+
+\[
+A\in\mathbb{R}^{m\times n}
+\]
+
+は
+
+\[
+\boxed{A=U\Sigma V^\top}
+\]
+
+と分解できます。
+
+\hypertarget{ux4f55ux3092ux3057ux3066ux3044ux308bux306eux304b}{%
+\subsection{1.
+何をしているのか}\label{ux4f55ux3092ux3057ux3066ux3044ux308bux306eux304b}}
+
+ベクトル \texttt{x} に \texttt{A} を作用させる過程を
+
+\[
+x\xrightarrow{V^\top}V^\top x\xrightarrow{\Sigma}\Sigma V^\top x\xrightarrow{U}Ax
+\]
+
+と見ます。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{V\^{}T}: 入力空間を右特異ベクトル基底へ回転・鏡映する
+\item
+  \texttt{Σ}: 各直交方向を \texttt{σ\_i} 倍する
+\item
+  \texttt{U}: 出力空間の左特異ベクトル方向へ回転・鏡映する
+\end{itemize}
+
+つまり一般の線形写像を「直交変換 → 軸ごとの伸縮 →
+直交変換」に分けています。
+
+\hypertarget{ux7279ux7570ux5024ux306fux3069ux3046ux6c42ux307eux308bux304b}{%
+\subsection{2.
+特異値はどう求まるか}\label{ux7279ux7570ux5024ux306fux3069ux3046ux6c42ux307eux308bux304b}}
+
+\[
+A^\top A=V\Sigma^\top\Sigma V^\top
+\]
+
+なので、\texttt{V} の列は \texttt{A\^{}TA} の固有ベクトルです。また
+
+\[
+\lambda_i(A^\top A)=\sigma_i^2
+\]
+
+です。
+
+同様に \texttt{U} の列は \texttt{AA\^{}T} の固有ベクトルです。
+
+したがって
+
+\[
+Av_i=\sigma_i u_i
+\]
+
+となります。右特異ベクトル方向 \texttt{v\_i} の単位ベクトルを \texttt{A}
+が \texttt{σ\_i} 倍し、左特異ベクトル方向 \texttt{u\_i}
+へ送るという意味です。
+
+\hypertarget{ux30e9ux30f3ux30afux3068ux306eux95a2ux4fc2}{%
+\subsection{3.
+ランクとの関係}\label{ux30e9ux30f3ux30afux3068ux306eux95a2ux4fc2}}
+
+非零特異値の個数がランクです。
+
+\[
+\operatorname{rank}(A)=\#\{i:\sigma_i>0\}
+\]
+
+零特異値に対応する右特異ベクトルは \texttt{ker(A)} を張ります。
+
+\hypertarget{ux5916ux7a4dux306eux548cux3068ux3057ux3066ux898bux308b}{%
+\subsection{4.
+外積の和として見る}\label{ux5916ux7a4dux306eux548cux3068ux3057ux3066ux898bux308b}}
+
+SVD は
+
+\[
+A=\sum_{i=1}^r\sigma_i u_i v_i^\top
+\]
+
+とも書けます。
+
+各 \texttt{u\_i\ v\_i\^{}T} はランク1行列です。したがって \texttt{A}
+は、重要度 \texttt{σ\_i} を持つランク1成分の和として理解できます。
+
+この見方から画像圧縮や低ランク近似が自然に出てきます。
+
+\hypertarget{ux6761ux4ef6ux6570ux3068ux306eux95a2ux4fc2}{%
+\subsection{5.
+条件数との関係}\label{ux6761ux4ef6ux6570ux3068ux306eux95a2ux4fc2}}
+
+full rank の場合
+
+\[
+\kappa_2(A)=\frac{\sigma_{\max}}{\sigma_{\min}}
+\]
+
+です。最小特異値が小さいとは、ある入力方向がほとんど潰されることを意味します。その方向を逆に復元しようとすると誤差が大幅に増幅されます。
+
+\hypertarget{svd-ux304cux7d71ux4e00ux3059ux308bux3082ux306e}{%
+\subsection{6. SVD
+が統一するもの}\label{svd-ux304cux7d71ux4e00ux3059ux308bux3082ux306e}}
+
+SVD から直接
+
+\begin{itemize}
+\tightlist
+\item
+  ランク
+\item
+  四つの基本部分空間
+\item
+  擬似逆行列
+\item
+  最小二乗
+\item
+  条件数
+\item
+  低ランク近似
+\item
+  PCA
+\item
+  画像圧縮
+\item
+  ノイズ除去
+\end{itemize}
+
+を説明できます。
+
+SVD
+を単なる計算手法ではなく、\textbf{線形写像の幾何学的な標準形}として理解することが最重要です。
+
+\end{document}

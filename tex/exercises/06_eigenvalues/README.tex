@@ -1,0 +1,100 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6f14ux7fd2-06-ux56faux6709ux5024}{%
+\section{演習 06 --- 固有値}\label{ux6f14ux7fd2-06-ux56faux6709ux5024}}
+
+\hypertarget{ux56faux6709ux5024ux8a08ux7b97}{%
+\subsection{1. 固有値計算}\label{ux56faux6709ux5024ux8a08ux7b97}}
+
+\[
+A=\begin{bmatrix}2&1\\1&2\end{bmatrix}
+\]
+
+の固有値と正規化固有ベクトルを求めてください。
+
+\hypertarget{ux5bfeux89d2ux5316}{%
+\subsection{2. 対角化}\label{ux5bfeux89d2ux5316}}
+
+上の \texttt{A} を \texttt{QΛQ\^{}T} と書いてください。
+
+\hypertarget{ux53cdux5fa9}{%
+\subsection{3. 反復}\label{ux53cdux5fa9}}
+
+初期ベクトルを固有ベクトル基底で \texttt{x\_0=c\_1v\_1+c\_2v\_2}
+としたとき、\texttt{A\^{}kx\_0} を求め、\texttt{k→∞}
+の挙動を説明してください。
+
+\hypertarget{ux5bfeux79f0ux884cux5217}{%
+\subsection{4. 対称行列}\label{ux5bfeux79f0ux884cux5217}}
+
+実対称行列の異なる固有値に属する固有ベクトルが直交することを証明してください。
+
+\hypertarget{svd-ux3078ux306eux6a4b}{%
+\subsection{5. SVD への橋}\label{svd-ux3078ux306eux6a4b}}
+
+なぜ \texttt{A\^{}TA} の固有値が非負になるのか説明してください。
+
+\end{document}

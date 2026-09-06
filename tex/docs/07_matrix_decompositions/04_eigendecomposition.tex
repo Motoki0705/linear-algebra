@@ -1,0 +1,108 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux56faux6709ux5024ux5206ux89e3}{%
+\section{固有値分解}\label{ux56faux6709ux5024ux5206ux89e3}}
+
+対角化可能な正方行列 \texttt{A} は
+
+\[
+A=P\Lambda P^{-1}
+\]
+
+と分解できます。
+
+\texttt{P} の列は固有ベクトル、\texttt{Λ} の対角成分は固有値です。
+
+\hypertarget{ux4f55ux304cux5206ux304bux308bux304b}{%
+\subsection{何が分かるか}\label{ux4f55ux304cux5206ux304bux308bux304b}}
+
+この分解を使うと
+
+\[
+A^k=P\Lambda^kP^{-1}
+\]
+
+なので、繰り返し作用させたときの挙動を固有値の累乗として理解できます。
+
+例えば \texttt{\textbar{}λ\textbar{}\textgreater{}1}
+の方向は増幅し、\texttt{\textbar{}λ\textbar{}\textless{}1}
+の方向は減衰します。
+
+\hypertarget{svd-ux3068ux306eux9055ux3044}{%
+\subsection{SVD との違い}\label{svd-ux3068ux306eux9055ux3044}}
+
+固有値分解では入力と出力で同じ固有方向を使います。そのため正方行列が対象で、常に良い直交基底が存在するわけではありません。
+
+SVD は
+
+\[
+A=U\Sigma V^\top
+\]
+
+のように入力側 \texttt{V} と出力側 \texttt{U}
+を分けることで、任意の実行列に対して直交基底による分解を可能にしています。
+
+\end{document}

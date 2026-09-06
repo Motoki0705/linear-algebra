@@ -1,0 +1,110 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{span}{%
+\section{Span}\label{span}}
+
+\texttt{v\_1,...,v\_k} のすべての一次結合の集合を
+
+\[
+\operatorname{span}\{v_1,\dots,v_k\}
+\]
+
+と書きます。
+
+\hypertarget{ux5e7eux4f55ux5b66ux7684ux610fux5473}{%
+\subsection{幾何学的意味}\label{ux5e7eux4f55ux5b66ux7684ux610fux5473}}
+
+\texttt{R\^{}3} で
+
+\begin{itemize}
+\tightlist
+\item
+  1本の非零ベクトルの span は原点を通る直線
+\item
+  独立な2本の span は原点を通る平面
+\item
+  独立な3本の span は \texttt{R\^{}3} 全体
+\end{itemize}
+
+になります。
+
+ここで重要なのは、ベクトルの「本数」ではなく、独立な方向の数です。同じ方向のベクトルを何本追加しても
+span は広がりません。
+
+\hypertarget{ux9023ux7acbux65b9ux7a0bux5f0fux3068ux306eux63a5ux7d9a}{%
+\subsection{連立方程式との接続}\label{ux9023ux7acbux65b9ux7a0bux5f0fux3068ux306eux63a5ux7d9a}}
+
+\texttt{Ax=b} が解を持つ条件は
+
+\[
+b\in\operatorname{span}\{a_1,\dots,a_n\}
+\]
+
+です。つまり \texttt{b} が \texttt{A} の列空間に存在することです。
+
+この一文だけで、連立方程式の可解性を幾何学的に表現できます。
+
+\end{document}

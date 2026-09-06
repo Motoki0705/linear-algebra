@@ -1,0 +1,109 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-10-ux767aux5c55ux30c8ux30d4ux30c3ux30af}{%
+\section{解答 10 ---
+発展トピック}\label{ux89e3ux7b54-10-ux767aux5c55ux30c8ux30d4ux30c3ux30af}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+固有値は1だけです。\texttt{(A-I)v=0} から固有空間は
+\texttt{span\{(1,0)\^{}T\}}
+の1次元しかなく、2本の独立固有ベクトルを持たないため対角化できません。
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+\texttt{A=I+N} で \texttt{I,N} は可換、\texttt{N\^{}2=0} なので
+
+\[
+e^{At}=e^t e^{Nt}=e^t(I+tN)
+=e^t\begin{bmatrix}1&t\\0&1\end{bmatrix}.
+\]
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+各固有方向は概ね \texttt{e\^{}\{λt\}}
+で変化します。\texttt{Re(λ)\textless{}0}
+なら減衰、\texttt{Re(λ)\textgreater{}0} なら増幅します。Jordan block
+がある場合は多項式因子も現れます。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+標準基底 \texttt{e\_i} に対する値 \texttt{a\_i=f(e\_i)}
+を並べます。\texttt{x=Σx\_ie\_i} と線形性から
+\texttt{f(x)=Σa\_ix\_i=a\^{}Tx} です。
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+\texttt{uv\^{}Tx=u(v\^{}Tx)} なので出力は常に \texttt{span\{u\}}
+に入ります。よって像の次元は高々1です。SVD は一般行列をこの rank-1
+行列の直交的な和として分解します。
+
+\end{document}

@@ -1,0 +1,120 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-07-ux884cux5217ux5206ux89e3}{%
+\section{解答 07 ---
+行列分解}\label{ux89e3ux7b54-07-ux884cux5217ux5206ux89e3}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+第2行から第1行の2倍を引くので
+
+\[
+L=\begin{bmatrix}1&0\\2&1\end{bmatrix},\quad
+U=\begin{bmatrix}2&1\\0&1\end{bmatrix}.
+\]
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+第一列 \texttt{a\_1=(1,1,0)\^{}T} より \texttt{q\_1=a\_1/√2}。第二列から
+\texttt{q\_1} 方向を引いて正規化すれば \texttt{q\_2}
+が得られます。\texttt{R=Q\^{}TA} として係数を求められます。ここでは、QR
+が「列空間の正規直交基底 Q」と「その基底での列座標
+R」を分けることが重要です。
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+\[
+A^TA=(UΣV^T)^T(UΣV^T)=VΣ^TU^TUΣV^T.
+\]
+
+\texttt{U\^{}TU=I} より結論を得ます。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+\texttt{V\^{}T} と \texttt{U}
+は可逆な直交変換なのでランクを変えません。したがって
+\texttt{rank(A)=rank(Σ)}。対角型の \texttt{Σ}
+のランクは非零対角成分、つまり非零特異値の個数です。
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+\texttt{v\_i} は入力楕円体の主軸になる入力方向、\texttt{σ\_i}
+はその方向の伸縮率、\texttt{u\_i} は伸縮後の出力方向です。式では
+\texttt{Av\_i=σ\_iu\_i} です。
+
+\hypertarget{section-5}{%
+\subsection{6}\label{section-5}}
+
+固有値分解は主に正方行列に対し、同じ固有ベクトル基底で入力・出力を表し、固有値は負・複素にもなり得ます。SVD
+は任意の長方形行列に存在し、入力 \texttt{V} と出力 \texttt{U}
+に別の直交基底を使い、特異値は常に非負です。
+
+\end{document}

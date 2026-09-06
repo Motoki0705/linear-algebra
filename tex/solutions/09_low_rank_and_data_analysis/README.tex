@@ -1,0 +1,116 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-09-ux4f4eux30e9ux30f3ux30afux8fd1ux4f3cux3068ux30c7ux30fcux30bfux89e3ux6790}{%
+\section{解答 09 ---
+低ランク近似とデータ解析}\label{ux89e3ux7b54-09-ux4f4eux30e9ux30f3ux30afux8fd1ux4f3cux3068ux30c7ux30fcux30bfux89e3ux6790}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+Eckart--Young--Mirsky 定理より
+
+\[
+\|A-A_2\|_F=\sqrt{1^2+0.1^2}=\sqrt{1.01}.
+\]
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+全エネルギーは
+\texttt{100+9+1+0.01=110.01}、上位2成分は109なので保持率は
+
+\[
+109/110.01\approx0.9908
+\]
+
+すなわち約99.1\%です。
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+\texttt{X\_c=UΣV\^{}T} なら
+
+\[
+C=\frac1{n-1}VΣ^2V^T.
+\]
+
+よって \texttt{V}
+の列が共分散行列の固有ベクトル、すなわち主成分方向です。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+全分散は固定なので、部分空間へ射影して保持する分散を最大化することは、直交補空間へ捨てる二乗距離を最小化することと等価です。SVD
+の最良低ランク近似定理がこれを厳密に与えます。
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+\texttt{k} が小さすぎると本物の弱い構造まで消して bias
+が増えます。大きすぎるとノイズ成分を残して variance が増えます。適切な
+\texttt{k} は信号構造とノイズ強度に依存します。
+
+\end{document}

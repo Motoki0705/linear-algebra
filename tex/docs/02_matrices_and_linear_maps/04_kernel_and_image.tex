@@ -1,0 +1,107 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6838ux3068ux50cf}{%
+\section{核と像}\label{ux6838ux3068ux50cf}}
+
+線形写像 \texttt{A:R\^{}n→R\^{}m} に対して
+
+\[
+\ker A=\{x\mid Ax=0\}
+\]
+
+を核、
+
+\[
+\operatorname{Im}A=\{Ax\mid x\in\mathbb{R}^n\}
+\]
+
+を像と呼びます。
+
+\hypertarget{ux6838ux306eux610fux5473}{%
+\subsection{核の意味}\label{ux6838ux306eux610fux5473}}
+
+核は変換によって完全に消えてしまう入力方向です。\texttt{x\_1-x\_2∈ker(A)}
+なら
+
+\[
+Ax_1=Ax_2
+\]
+
+なので、\texttt{A} はその二つの入力を区別できません。
+
+\hypertarget{ux50cfux306eux610fux5473}{%
+\subsection{像の意味}\label{ux50cfux306eux610fux5473}}
+
+像は \texttt{A}
+によって到達できる出力全体です。行列の場合、像は列空間と同じです。
+
+\hypertarget{ux60c5ux5831ux3068ux3044ux3046ux8996ux70b9}{%
+\subsection{情報という視点}\label{ux60c5ux5831ux3068ux3044ux3046ux8996ux70b9}}
+
+核が大きいほど入力情報が失われます。像の次元がランクです。SVD
+では零特異値に対応する右特異ベクトルが核を張ります。
+
+\end{document}

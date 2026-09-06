@@ -1,0 +1,109 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{chapter-10-ux767aux5c55ux7684ux306aux69cbux9020}{%
+\section{Chapter 10 ---
+発展的な構造}\label{chapter-10-ux767aux5c55ux7684ux306aux69cbux9020}}
+
+ここでは「SVD
+で線形代数のすべてを説明できるわけではない」部分へ進みます。
+
+\hypertarget{jordan-ux6a19ux6e96ux5f62}{%
+\subsection{Jordan 標準形}\label{jordan-ux6a19ux6e96ux5f62}}
+
+固有ベクトルが十分にない行列でも、一般化固有ベクトルを使えば Jordan form
+まで単純化できます。これは線形作用素の代数的構造を調べる道具です。
+
+\hypertarget{ux884cux5217ux95a2ux6570ux3068ux6642ux9593ux767aux5c55}{%
+\subsection{行列関数と時間発展}\label{ux884cux5217ux95a2ux6570ux3068ux6642ux9593ux767aux5c55}}
+
+\[
+\dot x=Ax
+\]
+
+の解
+
+\[
+x(t)=e^{At}x(0)
+\]
+
+では、固有値が時間発展の成長・減衰を支配します。
+
+ここでは SVD より固有値の方が自然です。SVD
+は一回の写像の伸縮を理解するのに優れ、固有値は同じ写像を繰り返すダイナミクスを理解するのに優れます。
+
+\hypertarget{ux53ccux5bfeux7a7aux9593}{%
+\subsection{双対空間}\label{ux53ccux5bfeux7a7aux9593}}
+
+ベクトルそのものと、そのベクトルをスカラーへ写す線形汎関数を区別します。Euclid
+空間では内積が両者を自然に対応させるため見えにくい概念ですが、微分幾何やテンソルでは重要です。
+
+\hypertarget{ux5230ux9054ux57faux6e96}{%
+\subsection{到達基準}\label{ux5230ux9054ux57faux6e96}}
+
+「幾何学的な
+SVD」と「代数的・動的な固有値理論」の役割の違いを説明できることを目指します。
+
+\end{document}

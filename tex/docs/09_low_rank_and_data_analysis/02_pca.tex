@@ -1,0 +1,149 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{pcaux4e3bux6210ux5206ux5206ux6790}{%
+\section{PCA（主成分分析）}\label{pcaux4e3bux6210ux5206ux5206ux6790}}
+
+データ行列 \texttt{X∈R\^{}\{n×d\}}
+の各行をサンプルとし、まず各特徴量の平均を引いて中心化します。
+
+\[
+X_c=X-\mathbf{1}\mu^\top
+\]
+
+標本共分散行列は
+
+\[
+C=\frac{1}{n-1}X_c^\top X_c
+\]
+
+です。
+
+\hypertarget{pca-ux306eux76eeux7684}{%
+\subsection{PCA の目的}\label{pca-ux306eux76eeux7684}}
+
+単位ベクトル \texttt{v} 方向へ射影した値は \texttt{X\_cv}
+です。その標本分散は
+
+\[
+\frac{1}{n-1}\|X_cv\|_2^2
+=\frac{1}{n-1}v^\top X_c^\top X_cv
+=v^\top Cv
+\]
+
+です。
+
+したがって PCA は
+
+\[
+\max_{\|v\|=1}v^\top Cv
+\]
+
+を解き、最も分散の大きい方向を探します。この解が \texttt{C}
+の最大固有値に対応する固有ベクトルです。
+
+\hypertarget{svd-ux3068ux306eux95a2ux4fc2}{%
+\subsection{SVD との関係}\label{svd-ux3068ux306eux95a2ux4fc2}}
+
+\[
+X_c=U\Sigma V^\top
+\]
+
+なら
+
+\[
+C=\frac{1}{n-1}V\Sigma^2V^\top
+\]
+
+です。
+
+したがって
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{V} の列 = 主成分方向
+\item
+  \texttt{σ\_i\^{}2/(n-1)} = 各主成分の標本分散
+\end{itemize}
+
+です。
+
+上位 \texttt{k} 主成分への座標は
+
+\[
+Z=X_cV_k
+\]
+
+です。
+
+\hypertarget{ux6df1ux3044ux898bux65b9}{%
+\subsection{深い見方}\label{ux6df1ux3044ux898bux65b9}}
+
+PCA
+は「分散最大化」と「再構成誤差最小化」という二つの見方を持ちます。上位主成分を残すことは、中心化データの最良
+rank-k 近似を作ることと同値です。
+
+\end{document}

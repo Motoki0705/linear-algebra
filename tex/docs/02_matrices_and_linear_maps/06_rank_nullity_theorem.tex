@@ -1,0 +1,108 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6b21ux5143ux5b9aux7406ranknullity-theorem}{%
+\section{次元定理（Rank--Nullity
+Theorem）}\label{ux6b21ux5143ux5b9aux7406ranknullity-theorem}}
+
+\texttt{A:R\^{}n→R\^{}m} に対して
+
+\[
+\boxed{\dim\ker A+\operatorname{rank}(A)=n}
+\]
+
+が成立します。
+
+\hypertarget{ux672cux8ceaux7684ux306aux610fux5473}{%
+\subsection{本質的な意味}\label{ux672cux8ceaux7684ux306aux610fux5473}}
+
+入力空間の \texttt{n} 個の自由度は、
+
+\begin{itemize}
+\tightlist
+\item
+  変換後に残る方向
+\item
+  変換によって消える方向
+\end{itemize}
+
+に完全に分配されます。
+
+例えば \texttt{rank(A)=r} なら、独立な出力情報は \texttt{r}
+次元で、失われる入力自由度は \texttt{n-r} 次元です。
+
+\hypertarget{svd-ux3067ux898bux308b}{%
+\subsection{SVD で見る}\label{svd-ux3067ux898bux308b}}
+
+\[
+A=U\Sigma V^\top
+\]
+
+で非零特異値が \texttt{r} 個なら、\texttt{V} の最初の \texttt{r}
+本は情報が出力へ伝わる方向、残り \texttt{n-r} 本は零空間方向です。
+
+したがって次元定理は、SVD の幾何学ではほとんど目で見える形になります。
+
+\end{document}

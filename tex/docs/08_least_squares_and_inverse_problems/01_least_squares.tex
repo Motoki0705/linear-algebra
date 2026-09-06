@@ -1,0 +1,130 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6700ux5c0fux4e8cux4e57ux6cd5}{%
+\section{最小二乗法}\label{ux6700ux5c0fux4e8cux4e57ux6cd5}}
+
+方程式
+
+\[
+Ax=b
+\]
+
+が厳密に解けない場合、最小二乗法では
+
+\[
+\boxed{\min_x\|Ax-b\|_2^2}
+\]
+
+を解きます。
+
+\hypertarget{ux5e7eux4f55ux5b66}{%
+\subsection{幾何学}\label{ux5e7eux4f55ux5b66}}
+
+\texttt{Ax} は必ず \texttt{Col(A)}
+上にあります。したがって問題は、\texttt{b}
+に最も近い列空間上の点を探すことです。
+
+最適点を \texttt{A\textbackslash{}hat\ x} とすると、残差
+
+\[
+r=b-A\hat x
+\]
+
+は列空間に直交します。
+
+\[
+A^\top r=0
+\]
+
+よって
+
+\[
+A^\top(b-A\hat x)=0
+\]
+
+から
+
+\[
+A^\top A\hat x=A^\top b
+\]
+
+が得られます。
+
+\hypertarget{ux7d71ux8a08ux3068ux306eux63a5ux7d9a}{%
+\subsection{統計との接続}\label{ux7d71ux8a08ux3068ux306eux63a5ux7d9a}}
+
+線形回帰
+
+\[
+y=X\beta+\varepsilon
+\]
+
+で二乗誤差を最小化することは、\texttt{y} を \texttt{X}
+の列空間へ射影することと同じです。
+
+つまり最小二乗法は「回帰の公式」ではなく、直交射影という線形代数の幾何学です。
+
+\end{document}

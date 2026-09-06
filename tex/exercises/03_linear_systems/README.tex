@@ -1,0 +1,107 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6f14ux7fd2-03-ux9023ux7acbux4e00ux6b21ux65b9ux7a0bux5f0f}{%
+\section{演習 03 ---
+連立一次方程式}\label{ux6f14ux7fd2-03-ux9023ux7acbux4e00ux6b21ux65b9ux7a0bux5f0f}}
+
+\hypertarget{gauss-ux6d88ux53bb}{%
+\subsection{1. Gauss 消去}\label{gauss-ux6d88ux53bb}}
+
+\[
+\begin{cases}
+x+2y-z=1\\
+2x+4y+z=4\\
+-x-2y+2z=1
+\end{cases}
+\]
+
+を Gauss 消去で解いてください。
+
+\hypertarget{ux89e3ux306eux5b58ux5728}{%
+\subsection{2. 解の存在}\label{ux89e3ux306eux5b58ux5728}}
+
+\texttt{Ax=b} が解を持つことと \texttt{b∈Col(A)}
+が同値であることを、行列積を列の一次結合として説明してください。
+
+\hypertarget{ux89e3ux96c6ux5408}{%
+\subsection{3. 解集合}\label{ux89e3ux96c6ux5408}}
+
+\texttt{x\_p} が \texttt{Ax=b} の一つの解であるとき、全解が
+\texttt{x\_p+ker(A)} と書けることを証明してください。
+
+\hypertarget{ux4e00ux610fux6027}{%
+\subsection{4. 一意性}\label{ux4e00ux610fux6027}}
+
+\texttt{Ax=b} の解が存在すると仮定します。解が一意であることと
+\texttt{ker(A)=\{0\}} が同値であることを示してください。
+
+\hypertarget{ux9006ux884cux5217}{%
+\subsection{5. 逆行列}\label{ux9006ux884cux5217}}
+
+「逆行列を持つ」「full rank」「零空間が
+\texttt{\{0\}}」の関係を説明してください。
+
+\end{document}

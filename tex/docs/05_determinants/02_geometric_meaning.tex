@@ -1,0 +1,102 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux884cux5217ux5f0fux306eux5e7eux4f55ux5b66ux7684ux610fux5473}{%
+\section{行列式の幾何学的意味}\label{ux884cux5217ux5f0fux306eux5e7eux4f55ux5b66ux7684ux610fux5473}}
+
+単位正方形の辺ベクトル \texttt{e\_1,e\_2} を \texttt{A}
+で変換すると、辺は \texttt{Ae\_1,Ae\_2} になります。
+
+これらが作る平行四辺形の面積は
+
+\[
+|\det A|
+\]
+
+です。
+
+符号は向きを表します。負の行列式は鏡映を含むような向きの反転を意味します。
+
+\hypertarget{ux7279ux7570ux5024ux3068ux306eux95a2ux4fc2}{%
+\subsection{特異値との関係}\label{ux7279ux7570ux5024ux3068ux306eux95a2ux4fc2}}
+
+正方行列の SVD
+
+\[
+A=U\Sigma V^\top
+\]
+
+を考えると、直交行列 \texttt{U,V} は体積の絶対値を変えません。したがって
+
+\[
+|\det A|=\prod_i\sigma_i
+\]
+
+です。
+
+つまり行列式の絶対値は、各主軸方向の伸縮率である特異値の積です。この式は行列式と
+SVD の幾何学を直接結びつけます。
+
+\end{document}

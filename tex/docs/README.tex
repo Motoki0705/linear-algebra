@@ -1,0 +1,179 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux7ddaux5f62ux4ee3ux6570ux30c6ux30adux30b9ux30c8}{%
+\section{線形代数テキスト}\label{ux7ddaux5f62ux4ee3ux6570ux30c6ux30adux30b9ux30c8}}
+
+この \texttt{docs/}
+は、定義を順番に覚えるためではなく、\textbf{一つの概念が次の概念をなぜ必要とするか}を追うために構成されています。
+
+\hypertarget{ux8aadux307fux65b9}{%
+\subsection{読み方}\label{ux8aadux307fux65b9}}
+
+各章では最初に \texttt{README.md} を読み、その後 numbered files
+を順番に進めてください。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{01 ベクトル空間}
+\NormalTok{ ↓ 「空間をどう座標化するか」}
+\NormalTok{02 線形写像}
+\NormalTok{ ↓ 「写像の解をどう調べるか」}
+\NormalTok{03 連立方程式}
+\NormalTok{ ↓ 「近さ・直角をどう定義するか」}
+\NormalTok{04 内積と幾何}
+\NormalTok{ ↓}
+\NormalTok{05 行列式 ── 可逆性を別の角度から理解}
+\NormalTok{ ↓}
+\NormalTok{06 固有値 ── 変換に自然な方向を探す}
+\NormalTok{ ↓}
+\NormalTok{07 行列分解 ── 複雑な写像を単純な部品に分ける}
+\NormalTok{ ↓}
+\NormalTok{08 最小二乗・逆問題}
+\NormalTok{ ↓}
+\NormalTok{09 低ランク・PCA}
+\NormalTok{ ↓}
+\NormalTok{10 発展理論 / 11 数値計算}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux5404ux7bc0ux3067ux5fc5ux305aux78baux8a8dux3059ux308b4ux70b9}{%
+\subsection{各節で必ず確認する4点}\label{ux5404ux7bc0ux3067ux5fc5ux305aux78baux8a8dux3059ux308b4ux70b9}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{定義} --- 数式として何を意味するか。
+\item
+  \textbf{幾何学} --- 空間の中で何が起きているか。
+\item
+  \textbf{代数} --- 他の定理・式からどう導かれるか。
+\item
+  \textbf{接続} --- 後のどの概念に必要になるか。
+\end{enumerate}
+
+例えば SVD を学ぶとき、\texttt{A=UΣV\^{}T}
+を暗記するだけでは不十分です。\texttt{V}
+がなぜ入力側の正規直交基底なのか、\texttt{σ\_i}
+がなぜ伸縮率なのか、零特異値がなぜ核を表すのか、そこから擬似逆や PCA
+がなぜ出るのかを説明できる状態を目標にします。
+
+\hypertarget{ux7406ux89e3ux306eux5224ux5b9aux57faux6e96}{%
+\subsection{理解の判定基準}\label{ux7406ux89e3ux306eux5224ux5b9aux57faux6e96}}
+
+ある概念について次の3問に答えられれば、かなり深く理解できています。
+
+\begin{itemize}
+\tightlist
+\item
+  その定義を使わず、直感的な日本語で説明できるか。
+\item
+  その定義が必要になる具体例を一つ作れるか。
+\item
+  一つ前と一つ後の概念との関係を説明できるか。
+\end{itemize}
+
+計算問題を解けることは必要ですが、それだけを到達点にはしません。
+
+\end{document}

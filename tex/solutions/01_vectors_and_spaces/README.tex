@@ -1,0 +1,120 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-01-ux30d9ux30afux30c8ux30ebux3068ux30d9ux30afux30c8ux30ebux7a7aux9593}{%
+\section{解答 01 ---
+ベクトルとベクトル空間}\label{ux89e3ux7b54-01-ux30d9ux30afux30c8ux30ebux3068ux30d9ux30afux30c8ux30ebux7a7aux9593}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+\texttt{av\_1+bv\_2=(a+b,a,b)\^{}T} です。\texttt{(3,1,2)\^{}T}
+と比較すると \texttt{a=1,b=2,a+b=3} が同時に成立するので属します。
+
+重要なのは、これは \texttt{Ax=b} を解いていることと同じだという点です。
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+\texttt{v\_2=2v\_1} なので
+
+\[
+-2v_1+v_2+0v_3=0
+\]
+
+という非自明な一次結合が存在します。したがって一次従属です。
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+\texttt{R\^{}3} の次元は3です。3本の一次独立ベクトルの span
+は3次元部分空間になります。\texttt{R\^{}3} の3次元部分空間は
+\texttt{R\^{}3} 自身なので、空間全体を張ります。よって基底です。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+\texttt{z=-x-y} より
+
+\[
+(x,y,z)^T=x(1,0,-1)^T+y(0,1,-1)^T.
+\]
+
+したがって基底の一例は
+
+\[
+\{(1,0,-1)^T,(0,1,-1)^T\}
+\]
+
+で、次元は2です。零ベクトルを含み、加法とスカラー倍で条件
+\texttt{x+y+z=0} が保存されるため部分空間です。
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+ベクトルは抽象的・幾何学的対象で、座標は基底に依存する数値表現です。基底を変えると座標成分は変わりますが、ベクトルそのもの、一次独立性、空間の次元などは変わりません。この視点が対角化や
+SVD の「良い基底を選ぶ」という発想につながります。
+
+\end{document}

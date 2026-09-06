@@ -1,0 +1,105 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6b21ux5143}{%
+\section{次元}\label{ux6b21ux5143}}
+
+有限次元ベクトル空間 \texttt{V}
+の次元は、基底に含まれるベクトルの本数です。
+
+\[
+\dim V=n
+\]
+
+とは、\texttt{V} を表現するために独立な方向が \texttt{n}
+個必要だということです。
+
+\hypertarget{ux6210ux5206ux6570ux3068ux672cux8ceaux7684ux306aux6b21ux5143ux306fux9055ux3046}{%
+\subsection{「成分数」と「本質的な次元」は違う}\label{ux6210ux5206ux6570ux3068ux672cux8ceaux7684ux306aux6b21ux5143ux306fux9055ux3046}}
+
+1000個の成分を持つデータでも、そのデータが実際には10個の独立な方向の組合せでほぼ表せるなら、本質的な自由度は10程度かもしれません。
+
+この考え方が
+
+\begin{itemize}
+\tightlist
+\item
+  ランク
+\item
+  低ランク近似
+\item
+  PCA
+\item
+  manifold 的なデータ理解
+\end{itemize}
+
+につながります。
+
+\hypertarget{ux6b21ux5143ux306fux57faux5e95ux306bux3088ux3089ux306aux3044}{%
+\subsection{次元は基底によらない}\label{ux6b21ux5143ux306fux57faux5e95ux306bux3088ux3089ux306aux3044}}
+
+異なる基底を選んでも基底ベクトルの本数は同じです。したがって次元は座標系ではなく、空間そのものに固有の量です。
+
+\end{document}

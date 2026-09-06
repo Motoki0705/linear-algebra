@@ -1,0 +1,110 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{gauss-ux6d88ux53bbux6cd5}{%
+\section{Gauss 消去法}\label{gauss-ux6d88ux53bbux6cd5}}
+
+Gauss
+消去法は、基本行変形によって連立方程式を解きやすい形に変える方法です。
+
+許される操作は
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  行の交換
+\item
+  非零定数倍
+\item
+  他の行の定数倍を加える
+\end{enumerate}
+
+です。
+
+\hypertarget{ux306aux305cux89e3ux96c6ux5408ux304cux5909ux308fux3089ux306aux3044ux306eux304b}{%
+\subsection{なぜ解集合が変わらないのか}\label{ux306aux305cux89e3ux96c6ux5408ux304cux5909ux308fux3089ux306aux3044ux306eux304b}}
+
+これらはすべて「同値な方程式へ置き換える操作」です。行列だけを機械的に変形しているのではなく、同じ制約集合を別の形で記述しています。
+
+\hypertarget{ux672cux8cea}{%
+\subsection{本質}\label{ux672cux8cea}}
+
+消去法の目的は数値を出すことだけではありません。pivot と free variable
+を露出させることで
+
+\begin{itemize}
+\tightlist
+\item
+  ランク
+\item
+  解の一意性
+\item
+  零空間の次元
+\end{itemize}
+
+を同時に明らかにします。
+
+\end{document}

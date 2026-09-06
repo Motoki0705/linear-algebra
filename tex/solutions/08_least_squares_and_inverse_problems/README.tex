@@ -1,0 +1,124 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-08-ux6700ux5c0fux4e8cux4e57ux3068ux9006ux554fux984c}{%
+\section{解答 08 ---
+最小二乗と逆問題}\label{ux89e3ux7b54-08-ux6700ux5c0fux4e8cux4e57ux3068ux9006ux554fux984c}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+\[
+A=\begin{bmatrix}0&1\\1&1\\2&1\end{bmatrix},\quad
+x=\begin{bmatrix}a\\b\end{bmatrix},\quad
+y=\begin{bmatrix}1\\2\\2\end{bmatrix}.
+\]
+
+正規方程式は
+
+\[
+\begin{bmatrix}5&3\\3&3\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}
+=\begin{bmatrix}6\\5\end{bmatrix}.
+\]
+
+これを解くと \texttt{a=1/2}, \texttt{b=7/6} です。
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+\[
+\|Ax-b\|^2=(Ax-b)^T(Ax-b)
+=x^TA^TAx-2b^TAx+b^Tb.
+\]
+
+勾配を0に置けば \texttt{A\^{}TAx=A\^{}Tb} です。
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+\texttt{P\^{}T=P} と \texttt{P\^{}2=P} を確認できます。また \texttt{Px}
+は \texttt{A} の列の一次結合なので列空間上にあり、列空間上の
+\texttt{y=Ac} に対して \texttt{Py=y} です。従って直交射影です。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+可逆なら全特異値が正で \texttt{Σ\^{}+=Σ\^{}\{-1\}}。したがって
+
+\[
+A^+=VΣ^{-1}U^T=(UΣV^T)^{-1}=A^{-1}.
+\]
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+\[
+\kappa_2(A)=10/10^{-4}=10^5.
+\]
+
+ある方向が別方向に比べて10万倍弱く観測されるため、逆算時には相対誤差が大きく増幅され得ます。
+
+\end{document}

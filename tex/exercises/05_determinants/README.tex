@@ -1,0 +1,105 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6f14ux7fd2-05-ux884cux5217ux5f0f}{%
+\section{演習 05 --- 行列式}\label{ux6f14ux7fd2-05-ux884cux5217ux5f0f}}
+
+\hypertarget{ux8a08ux7b97ux3068ux5e7eux4f55}{%
+\subsection{1. 計算と幾何}\label{ux8a08ux7b97ux3068ux5e7eux4f55}}
+
+\[
+A=\begin{bmatrix}2&1\\0&3\end{bmatrix}
+\]
+
+の行列式を求め、単位正方形の面積が何倍になるか説明してください。
+
+\hypertarget{ux53efux9006ux6027}{%
+\subsection{2. 可逆性}\label{ux53efux9006ux6027}}
+
+\texttt{det(A)=0} なら \texttt{A}
+の列が一次従属になる理由を説明してください。
+
+\hypertarget{ux7a4d}{%
+\subsection{3. 積}\label{ux7a4d}}
+
+\texttt{det(AB)=det(A)det(B)} を体積倍率という観点から説明してください。
+
+\hypertarget{svd-ux3068ux306eux63a5ux7d9a}{%
+\subsection{4. SVD との接続}\label{svd-ux3068ux306eux63a5ux7d9a}}
+
+正方行列について
+
+\[
+|\det A|=\prod_i\sigma_i
+\]
+
+となる理由を \texttt{A=UΣV\^{}T} から説明してください。
+
+\hypertarget{ux6df1ux6398ux308a}{%
+\subsection{5. 深掘り}\label{ux6df1ux6398ux308a}}
+
+行列式が小さいことと、行列が数値的に不安定であることは同じですか。反例やスケール依存性を考えてください。
+
+\end{document}

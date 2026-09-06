@@ -1,0 +1,144 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{chapter-07-ux884cux5217ux5206ux89e3}{%
+\section{Chapter 07 ---
+行列分解}\label{chapter-07-ux884cux5217ux5206ux89e3}}
+
+この章は前半の概念が合流する場所です。
+
+\hypertarget{ux306aux305cux5206ux89e3ux3059ux308bux306eux304b}{%
+\subsection{なぜ分解するのか}\label{ux306aux305cux5206ux89e3ux3059ux308bux306eux304b}}
+
+一つの大きな操作 \texttt{A} を、そのまま理解するより
+
+\[
+A=A_1A_2\cdots A_k
+\]
+
+と意味の分かる操作に分ける方が理解しやすく、計算にも有利です。
+
+\hypertarget{lu-qr-evd-svd-ux306eux5f79ux5272}{%
+\subsection{LU / QR / EVD / SVD
+の役割}\label{lu-qr-evd-svd-ux306eux5f79ux5272}}
+
+\hypertarget{lu}{%
+\subsubsection{LU}\label{lu}}
+
+Gauss 消去を保存した分解。主目的は連立方程式の効率的な解法です。
+
+\hypertarget{qr}{%
+\subsubsection{QR}\label{qr}}
+
+列空間を正規直交基底 \texttt{Q} と係数 \texttt{R}
+に分けます。最小二乗に強い分解です。
+
+\hypertarget{evd}{%
+\subsubsection{EVD}\label{evd}}
+
+同じ空間内の不変方向を探します。反復変換や力学系を理解するのに適します。
+
+\hypertarget{svd}{%
+\subsubsection{SVD}\label{svd}}
+
+\[
+A=U\Sigma V^T
+\]
+
+任意の行列を、入力側の直交基底・純粋な伸縮・出力側の直交基底へ分けます。
+
+\hypertarget{svd-ux3092ux7406ux89e3ux3059ux308bux6838ux5fc3}{%
+\subsection{SVD
+を理解する核心}\label{svd-ux3092ux7406ux89e3ux3059ux308bux6838ux5fc3}}
+
+必ず次の式を言葉にしてください。
+
+\[
+Av_i=\sigma_i u_i.
+\]
+
+これは「入力方向 \texttt{v\_i} を入れると、方向 \texttt{u\_i}
+へ向かう長さ \texttt{σ\_i} の出力になる」という意味です。
+
+さらに
+
+\[
+A=\sum_i\sigma_i u_iv_i^T
+\]
+
+と書けば、行列は重要度順の rank-1 成分へ分解されます。
+
+ここから低ランク近似が出ます。\texttt{σ\_i=0}
+の方向は核になり、\texttt{1/σ\_i}
+を使えば擬似逆が出ます。\texttt{σ\_max/σ\_min}
+を見れば条件数になります。
+
+\hypertarget{ux5230ux9054ux57faux6e96}{%
+\subsection{到達基準}\label{ux5230ux9054ux57faux6e96}}
+
+SVD から rank、null space、pseudoinverse、condition number、rank-k
+approximation を一続きで導けることを目標にします。
+
+\end{document}

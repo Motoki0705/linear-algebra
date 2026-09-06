@@ -1,0 +1,117 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux9023ux7acbux4e00ux6b21ux65b9ux7a0bux5f0f}{%
+\section{連立一次方程式}\label{ux9023ux7acbux4e00ux6b21ux65b9ux7a0bux5f0f}}
+
+\[
+Ax=b
+\]
+
+を解く問題には3つの見方があります。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  方程式の集合として見る。
+\item
+  \texttt{A} の列の一次結合として見る。
+\item
+  線形写像 \texttt{A} の逆像を求める問題として見る。
+\end{enumerate}
+
+\hypertarget{ux89e3ux304cux5b58ux5728ux3059ux308bux6761ux4ef6}{%
+\subsection{解が存在する条件}\label{ux89e3ux304cux5b58ux5728ux3059ux308bux6761ux4ef6}}
+
+\texttt{A={[}a\_1\ ...\ a\_n{]}} とすると
+
+\[
+Ax=x_1a_1+\cdots+x_na_n
+\]
+
+なので、解が存在する条件は
+
+\[
+b\in\operatorname{Col}(A)
+\]
+
+です。
+
+\hypertarget{ux89e3ux306eux5f62}{%
+\subsection{解の形}\label{ux89e3ux306eux5f62}}
+
+一つの特解 \texttt{x\_p} があれば、すべての解は
+
+\[
+x=x_p+z,\qquad z\in\ker A
+\]
+
+です。
+
+つまり解集合は「一つの解 +
+零空間」で表されます。この見方は自由変数の意味を明確にします。
+
+\end{document}

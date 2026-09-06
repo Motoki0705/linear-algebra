@@ -1,0 +1,97 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{jordan-ux6a19ux6e96ux5f62}{%
+\section{Jordan 標準形}\label{jordan-ux6a19ux6e96ux5f62}}
+
+すべての行列が対角化できるわけではありません。独立な固有ベクトルが不足する場合、対角行列の代わりに
+Jordan block を使います。
+
+Jordan block は
+
+\[
+J=\begin{bmatrix}
+\lambda&1&0\\
+0&\lambda&1\\
+0&0&\lambda
+\end{bmatrix}
+\]
+
+のような形です。
+
+\hypertarget{ux306aux305cux5fc5ux8981ux304b}{%
+\subsection{なぜ必要か}\label{ux306aux305cux5fc5ux8981ux304b}}
+
+対角化できない線形写像でも、適切な基底を選べば「対角に近い」標準形まで単純化できます。
+
+\hypertarget{ux6570ux5024ux8a08ux7b97ux3067ux306fux6ce8ux610f}{%
+\subsection{数値計算では注意}\label{ux6570ux5024ux8a08ux7b97ux3067ux306fux6ce8ux610f}}
+
+Jordan
+標準形は理論上重要ですが、数値的には非常に不安定です。小さな摂動で
+Jordan
+構造が大きく変化するため、実際の数値計算で直接求める対象ではないことが多いです。
+
+\end{document}

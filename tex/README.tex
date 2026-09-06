@@ -1,0 +1,181 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{linear-algebra-ux69cbux9020ux304bux3089ux7406ux89e3ux3059ux308bux7ddaux5f62ux4ee3ux6570}{%
+\section{Linear Algebra ---
+構造から理解する線形代数}\label{linear-algebra-ux69cbux9020ux304bux3089ux7406ux89e3ux3059ux308bux7ddaux5f62ux4ee3ux6570}}
+
+このリポジトリは、線形代数を「公式を覚える科目」ではなく、\textbf{空間・線形写像・分解・近似という一つの体系}として理解するための教材です。
+
+\hypertarget{ux5b66ux7fd2ux306eux4e2dux5fc3ux3068ux306aux308bux554fux3044}{%
+\subsection{学習の中心となる問い}\label{ux5b66ux7fd2ux306eux4e2dux5fc3ux3068ux306aux308bux554fux3044}}
+
+線形代数では、次の問いを繰り返し扱います。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  どのようなベクトルを組み合わせると、どの空間を表現できるか。
+\item
+  線形写像は空間をどのように変形するか。
+\item
+  その変形によって、何が保存され、何が失われるか。
+\item
+  行列を適切な基底で見たとき、その本質はどこまで単純になるか。
+\item
+  厳密な解が存在しない場合、最も自然な近似解をどう定義するか。
+\item
+  固有値分解や SVD によって、線形変換の構造をどう読み解くか。
+\end{enumerate}
+
+\hypertarget{ux63a8ux5968ux5b66ux7fd2ux9806ux5e8f}{%
+\subsection{推奨学習順序}\label{ux63a8ux5968ux5b66ux7fd2ux9806ux5e8f}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ベクトル・ベクトル空間}
+\NormalTok{        ↓}
+\NormalTok{行列・線形写像}
+\NormalTok{        ↓}
+\NormalTok{連立一次方程式}
+\NormalTok{        ↓}
+\NormalTok{内積・直交・射影}
+\NormalTok{        ↓}
+\NormalTok{行列式}
+\NormalTok{        ↓}
+\NormalTok{固有値・固有ベクトル}
+\NormalTok{        ↓}
+\NormalTok{行列分解（LU / QR / EVD / SVD）}
+\NormalTok{        ↓}
+\NormalTok{最小二乗・擬似逆行列}
+\NormalTok{        ↓}
+\NormalTok{低ランク近似・PCA・画像圧縮・ノイズ除去}
+\NormalTok{        ↓}
+\NormalTok{数値線形代数・発展トピック}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux30c7ux30a3ux30ecux30afux30c8ux30ea}{%
+\subsection{ディレクトリ}\label{ux30c7ux30a3ux30ecux30afux30c8ux30ea}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{docs/}:
+  解説。定義だけでなく、直感・導出・幾何学的意味・概念間の接続を重視します。
+\item
+  \texttt{exercises/}: 各章の演習問題。
+\item
+  \texttt{solutions/}: 演習の解答と考え方。
+\item
+  \texttt{examples/}: NumPy 実装、可視化、応用例。
+\item
+  \texttt{assets/}: 図や模式図を置くための領域。
+\end{itemize}
+
+まずは
+\href{docs/00_overview/02_learning_path.pdf}{\texttt{docs/00\_overview/02\_learning\_path.md}}
+から始めてください。
+
+\end{document}

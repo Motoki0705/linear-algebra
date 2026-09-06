@@ -1,0 +1,117 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{svd-ux306bux3088ux308bux753bux50cfux5727ux7e2e}{%
+\section{SVD
+による画像圧縮}\label{svd-ux306bux3088ux308bux753bux50cfux5727ux7e2e}}
+
+グレースケール画像を行列
+
+\[
+A\in\mathbb{R}^{m\times n}
+\]
+
+として扱います。
+
+SVD
+
+\[
+A=U\Sigma V^\top
+\]
+
+の上位 \texttt{k} 成分だけを残すと
+
+\[
+A_k=U_k\Sigma_kV_k^\top
+\]
+
+です。
+
+\hypertarget{ux306aux305cux5727ux7e2eux306bux306aux308bux306eux304b}{%
+\subsection{なぜ圧縮になるのか}\label{ux306aux305cux5727ux7e2eux306bux306aux308bux306eux304b}}
+
+元画像は \texttt{mn} 個の値を持ちます。一方 rank-k 表現はおよそ
+
+\[
+k(m+n+1)
+\]
+
+個の値で表現できます。
+
+\texttt{k} が十分小さければ大きな削減になります。
+
+\hypertarget{ux306aux305cux753bux50cfux304cux6b8bux308bux306eux304b}{%
+\subsection{なぜ画像が残るのか}\label{ux306aux305cux753bux50cfux304cux6b8bux308bux306eux304b}}
+
+自然画像では近接画素に強い相関があり、完全に独立な \texttt{mn}
+個の自由度を持つわけではありません。そのため特異値が上位成分へ集中しやすくなります。
+
+\hypertarget{ux91cdux8981ux306aux6ce8ux610f}{%
+\subsection{重要な注意}\label{ux91cdux8981ux306aux6ce8ux610f}}
+
+SVD 圧縮は JPEG そのものではありません。SVD
+は低ランク構造を利用する一般的な数学モデルであり、実用画像コーデックは量子化・周波数変換・エントロピー符号化なども利用します。
+
+\end{document}

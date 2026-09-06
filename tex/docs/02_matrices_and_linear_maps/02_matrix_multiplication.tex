@@ -1,0 +1,110 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux884cux5217ux7a4d}{%
+\section{行列積}\label{ux884cux5217ux7a4d}}
+
+\texttt{AB} は単なる計算規則ではなく、\textbf{線形写像の合成}
+を表します。
+
+\texttt{B:R\^{}n→R\^{}k}、\texttt{A:R\^{}k→R\^{}m} なら
+
+\[
+AB:R^n\to R^m
+\]
+
+であり、
+
+\[
+x\xrightarrow{B}Bx\xrightarrow{A}A(Bx)
+\]
+
+です。
+
+したがって
+
+\[
+(AB)x=A(Bx)
+\]
+
+となります。
+
+\hypertarget{ux306aux305cux4e00ux822cux306b-abba-ux306aux306eux304b}{%
+\subsection{なぜ一般に AB≠BA
+なのか}\label{ux306aux305cux4e00ux822cux306b-abba-ux306aux306eux304b}}
+
+写像の順序を変えると結果が変わるからです。例えば「回転してから射影」と「射影してから回転」は通常同じ操作ではありません。
+
+\hypertarget{svd-ux3068ux306eux63a5ux7d9a}{%
+\subsection{SVD との接続}\label{svd-ux3068ux306eux63a5ux7d9a}}
+
+\[
+A=U\Sigma V^\top
+\]
+
+は、\texttt{V\^{}T}、\texttt{Σ}、\texttt{U}
+という3つの写像の合成です。この意味を理解するためにも、行列積を写像の合成として捉えることが重要です。
+
+\end{document}

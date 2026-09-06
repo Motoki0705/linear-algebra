@@ -1,0 +1,119 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{qr-ux5206ux89e3}{%
+\section{QR 分解}\label{qr-ux5206ux89e3}}
+
+行列 \texttt{A∈R\^{}\{m×n\}} を
+
+\[
+A=QR
+\]
+
+と分解します。\texttt{Q} の列は正規直交し、\texttt{R} は上三角行列です。
+
+\hypertarget{ux5e7eux4f55ux5b66ux7684ux610fux5473}{%
+\subsection{幾何学的意味}\label{ux5e7eux4f55ux5b66ux7684ux610fux5473}}
+
+\texttt{A} の列が張る部分空間は \texttt{Q}
+の列が張る部分空間と同じです。しかし \texttt{Q}
+は正規直交基底なので、座標計算が非常に簡単になります。
+
+\texttt{A} の複雑さを
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Q}: 空間の向き
+\item
+  \texttt{R}: その基底での係数
+\end{itemize}
+
+へ分離していると理解できます。
+
+\hypertarget{ux6700ux5c0fux4e8cux4e57}{%
+\subsection{最小二乗}\label{ux6700ux5c0fux4e8cux4e57}}
+
+\[
+\min_x\|Ax-b\|_2
+\]
+
+に \texttt{A=QR} を代入すると
+
+\[
+\|QRx-b\|_2
+\]
+
+となります。\texttt{Q} の直交性を利用すると、正規方程式で
+\texttt{A\^{}TA} を作るより数値的に安定に解けます。
+
+\hypertarget{gramschmidt-ux3068ux306eux95a2ux4fc2}{%
+\subsection{Gram--Schmidt
+との関係}\label{gramschmidt-ux3068ux306eux95a2ux4fc2}}
+
+Gram--Schmidt は QR を構成する方法の一つです。ただし数値計算では
+Householder 変換など、より安定な方法が一般に使われます。
+
+\end{document}

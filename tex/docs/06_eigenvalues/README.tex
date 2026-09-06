@@ -1,0 +1,121 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{chapter-06-ux56faux6709ux5024ux3068ux56faux6709ux30d9ux30afux30c8ux30eb}{%
+\section{Chapter 06 ---
+固有値と固有ベクトル}\label{chapter-06-ux56faux6709ux5024ux3068ux56faux6709ux30d9ux30afux30c8ux30eb}}
+
+線形変換は通常ベクトルの方向を変えます。しかし、ごく特別な方向では向きを変えず倍率だけ変えます。
+
+\[
+Av=\lambda v
+\]
+
+この \texttt{v} が固有ベクトルです。
+
+\hypertarget{ux672cux8ceaux306fux81eaux7136ux306aux5ea7ux6a19ux8ef8ux3092ux63a2ux3059ux3053ux3068}{%
+\subsection{本質は「自然な座標軸を探す」こと}\label{ux672cux8ceaux306fux81eaux7136ux306aux5ea7ux6a19ux8ef8ux3092ux63a2ux3059ux3053ux3068}}
+
+固有ベクトルを基底にできれば
+
+\[
+A=P\Lambda P^{-1}
+\]
+
+となり、複雑な変換が各座標の独立なスカラー倍へ変わります。
+
+これは線形代数で繰り返される思想です。
+
+\begin{quote}
+対象に合った基底を選べば、複雑なものが単純に見える。
+\end{quote}
+
+\hypertarget{ux56faux6709ux5024ux304cux52d5ux529bux5b66ux3092ux652fux914dux3059ux308bux7406ux7531}{%
+\subsection{固有値が動力学を支配する理由}\label{ux56faux6709ux5024ux304cux52d5ux529bux5b66ux3092ux652fux914dux3059ux308bux7406ux7531}}
+
+\texttt{A} を何度も作用すると
+
+\[
+A^kv_i=\lambda_i^kv_i
+\]
+
+なので、長期挙動は \texttt{\textbar{}λ\_i\textbar{}}
+の大小で決まります。連続時間なら \texttt{e\^{}\{λ\_it\}} が現れます。
+
+\hypertarget{ux5bfeux79f0ux884cux5217ux304cux7279ux5225ux306aux7406ux7531}{%
+\subsection{対称行列が特別な理由}\label{ux5bfeux79f0ux884cux5217ux304cux7279ux5225ux306aux7406ux7531}}
+
+一般行列では固有ベクトルが足りなかったり直交しなかったりします。実対称行列では必ず正規直交固有基底が存在します。
+
+この非常に強い性質が、\texttt{A\^{}TA} を使って SVD
+を構成できる理由です。
+
+\hypertarget{ux5230ux9054ux57faux6e96}{%
+\subsection{到達基準}\label{ux5230ux9054ux57faux6e96}}
+
+固有値を単なる \texttt{det(A-λI)=0}
+の根ではなく、「変換に固有な不変方向の伸縮率」と説明できることを目指します。
+
+\end{document}

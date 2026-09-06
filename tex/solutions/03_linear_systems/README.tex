@@ -1,0 +1,112 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-03-ux9023ux7acbux4e00ux6b21ux65b9ux7a0bux5f0f}{%
+\section{解答 03 ---
+連立一次方程式}\label{ux89e3ux7b54-03-ux9023ux7acbux4e00ux6b21ux65b9ux7a0bux5f0f}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+第2式から第1式の2倍を引くと \texttt{3z=2}、第3式に第1式を加えると
+\texttt{z=2} となり矛盾します。したがって解は存在しません。
+
+この矛盾は augmented matrix に \texttt{0=非零}
+の行が現れることに対応します。
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+\texttt{A={[}a\_1\ ...\ a\_n{]}} なら
+
+\[
+Ax=x_1a_1+\cdots+x_na_n.
+\]
+
+よってある \texttt{x} で \texttt{Ax=b} が成立することは、\texttt{b}
+が列の一次結合で書けること、すなわち \texttt{b∈Col(A)} と同値です。
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+任意の解 \texttt{x} に対して \texttt{A(x-x\_p)=b-b=0} なので
+\texttt{x-x\_p∈ker(A)}。逆に \texttt{z∈ker(A)} なら
+\texttt{A(x\_p+z)=b}。よって全解は \texttt{x\_p+ker(A)} です。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+核に非零 \texttt{z} があれば \texttt{x\_p} と \texttt{x\_p+z}
+が別解になるため一意ではありません。逆に核が \texttt{\{0\}} なら二解
+\texttt{x\_1,x\_2} に対し \texttt{A(x\_1-x\_2)=0} から
+\texttt{x\_1=x\_2} です。
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+正方行列では full rank \texttt{n} なら nullity
+は0です。したがって写像は単射かつ全射となり、逆写像が存在します。これが逆行列です。
+
+\end{document}

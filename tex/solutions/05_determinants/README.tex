@@ -1,0 +1,106 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux89e3ux7b54-05-ux884cux5217ux5f0f}{%
+\section{解答 05 --- 行列式}\label{ux89e3ux7b54-05-ux884cux5217ux5f0f}}
+
+\hypertarget{section}{%
+\subsection{1}\label{section}}
+
+\texttt{det(A)=6} なので面積は6倍です。
+
+\hypertarget{section-1}{%
+\subsection{2}\label{section-1}}
+
+\texttt{det(A)=0} は線形変換が n
+次元体積を0へ潰すことを意味します。したがって像の次元は n 未満で、列は n
+本の独立方向を作れません。
+
+\hypertarget{section-2}{%
+\subsection{3}\label{section-2}}
+
+\texttt{B} が体積を \texttt{det(B)} 倍し、その後 \texttt{A} が
+\texttt{det(A)}
+倍するので、合成は積になります。符号も向きの反転回数として積で合成されます。
+
+\hypertarget{section-3}{%
+\subsection{4}\label{section-3}}
+
+\[
+\det A=\det U\det\Sigma\det V^T.
+\]
+
+直交行列の行列式は ±1 なので絶対値は1です。\texttt{det\ Σ=∏σ\_i}
+だから結論が得られます。
+
+\hypertarget{section-4}{%
+\subsection{5}\label{section-4}}
+
+同じではありません。例えば \texttt{A=10\^{}\{-6\}I}
+は行列式が非常に小さい一方、条件数は1で完全に well-conditioned
+です。悪条件性は絶対的な体積ではなく、方向ごとの伸縮率の比
+\texttt{σ\_max/σ\_min} に関係します。
+
+\end{document}

@@ -1,0 +1,112 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux4f4eux30e9ux30f3ux30afux8fd1ux4f3c}{%
+\section{低ランク近似}\label{ux4f4eux30e9ux30f3ux30afux8fd1ux4f3c}}
+
+SVD
+
+\[
+A=\sum_{i=1}^r\sigma_i u_i v_i^\top
+\]
+
+で特異値を大きい順に並べます。
+
+上位 \texttt{k} 個だけ残した
+
+\[
+\boxed{A_k=\sum_{i=1}^k\sigma_i u_i v_i^\top}
+\]
+
+はランク \texttt{k} 以下です。
+
+\hypertarget{eckartyoungmirsky-ux5b9aux7406}{%
+\subsection{Eckart--Young--Mirsky
+定理}\label{eckartyoungmirsky-ux5b9aux7406}}
+
+驚くべきことに \texttt{A\_k} は、すべての rank ≤ k の行列の中で
+\texttt{A} に最も近い行列です。
+
+\[
+A_k=\arg\min_{\operatorname{rank}(B)\le k}\|A-B\|_F
+\]
+
+さらに
+
+\[
+\|A-A_k\|_F^2=\sum_{i>k}\sigma_i^2
+\]
+
+です。
+
+\hypertarget{ux610fux5473}{%
+\subsection{意味}\label{ux610fux5473}}
+
+SVD
+は単に「大きい成分を残す経験則」ではありません。指定されたランク制約の下で数学的に最適な近似を与えます。
+
+特異値が急速に減衰する行列は、低次元構造を持つと考えられます。
+
+\end{document}

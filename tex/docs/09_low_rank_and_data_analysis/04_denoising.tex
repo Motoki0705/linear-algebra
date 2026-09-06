@@ -1,0 +1,110 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{svd-ux306bux3088ux308bux30ceux30a4ux30baux9664ux53bb}{%
+\section{SVD
+によるノイズ除去}\label{svd-ux306bux3088ux308bux30ceux30a4ux30baux9664ux53bb}}
+
+観測行列を
+
+\[
+A=S+N
+\]
+
+とします。\texttt{S} が信号、\texttt{N} がノイズです。
+
+信号が低ランク構造を持ち、ノイズが多数の方向へ分散しているなら、上位特異成分に信号が集まりやすくなります。
+
+そこで
+
+\[
+A_k=\sum_{i=1}^k\sigma_i u_i v_i^\top
+\]
+
+として小さな特異成分を捨てます。
+
+\hypertarget{ux5727ux7e2eux3068ux306eux9055ux3044}{%
+\subsection{圧縮との違い}\label{ux5727ux7e2eux3068ux306eux9055ux3044}}
+
+数式は画像圧縮と同じでも目的が違います。
+
+\begin{itemize}
+\tightlist
+\item
+  圧縮: 少ないパラメータで表す
+\item
+  ノイズ除去: 小さな成分をノイズとみなして除く
+\end{itemize}
+
+\hypertarget{ux9650ux754c}{%
+\subsection{限界}\label{ux9650ux754c}}
+
+小さい特異値が必ずノイズとは限りません。細かなテクスチャや弱い信号も小さい特異値に現れることがあります。
+
+そのため \texttt{k} の選択は bias--variance trade-off
+を持ちます。小さすぎる \texttt{k} は信号を消し、大きすぎる \texttt{k}
+はノイズを残します。
+
+\end{document}

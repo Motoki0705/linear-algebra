@@ -1,0 +1,102 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux884cux5217}{%
+\section{行列}\label{ux884cux5217}}
+
+行列は数を長方形に並べたものですが、線形代数では
+\textbf{線形写像の座標表現} として理解することが最重要です。
+
+\[
+A\in\mathbb{R}^{m\times n}
+\]
+
+は \texttt{R\^{}n} の入力を \texttt{R\^{}m} の出力へ写します。
+
+\[
+x\mapsto Ax
+\]
+
+\hypertarget{ux3064ux306eux898bux65b9}{%
+\subsection{3つの見方}\label{ux3064ux306eux898bux65b9}}
+
+\hypertarget{ux884cux306bux3088ux308bux898bux65b9}{%
+\subsubsection{行による見方}\label{ux884cux306bux3088ux308bux898bux65b9}}
+
+各出力成分は、入力との内積です。
+
+\hypertarget{ux5217ux306bux3088ux308bux898bux65b9}{%
+\subsubsection{列による見方}\label{ux5217ux306bux3088ux308bux898bux65b9}}
+
+\texttt{Ax} は \texttt{A} の列の一次結合です。
+
+\hypertarget{ux5199ux50cfux306bux3088ux308bux898bux65b9}{%
+\subsubsection{写像による見方}\label{ux5199ux50cfux306bux3088ux308bux898bux65b9}}
+
+空間全体を伸縮・せん断・回転・射影します。
+
+この3つを行き来できることが重要です。
+
+\end{document}

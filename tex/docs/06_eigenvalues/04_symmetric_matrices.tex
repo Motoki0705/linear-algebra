@@ -1,0 +1,108 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux5bfeux79f0ux884cux5217}{%
+\section{対称行列}\label{ux5bfeux79f0ux884cux5217}}
+
+実行列 \texttt{A} が
+
+\[
+A^\top=A
+\]
+
+を満たすとき対称行列と呼びます。
+
+対称行列は非常に特別で、
+
+\begin{itemize}
+\tightlist
+\item
+  固有値がすべて実数
+\item
+  異なる固有値の固有ベクトルは直交
+\item
+  正規直交固有基底を持つ
+\end{itemize}
+
+という性質があります。
+
+したがって
+
+\[
+A=Q\Lambda Q^\top
+\]
+
+と分解できます。
+
+\hypertarget{ux306aux305c-svd-ux306eux524dux306bux91cdux8981ux304b}{%
+\subsection{なぜ SVD
+の前に重要か}\label{ux306aux305c-svd-ux306eux524dux306bux91cdux8981ux304b}}
+
+一般行列 \texttt{A} に対して \texttt{A\^{}TA} と \texttt{AA\^{}T}
+は必ず対称行列です。SVD はこれらの固有値分解から構成できます。
+
+つまり対称行列の理論は SVD の直接の土台です。
+
+\end{document}

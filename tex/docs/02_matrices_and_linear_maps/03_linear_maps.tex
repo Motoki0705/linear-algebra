@@ -1,0 +1,110 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux7ddaux5f62ux5199ux50cf}{%
+\section{線形写像}\label{ux7ddaux5f62ux5199ux50cf}}
+
+写像 \texttt{T:V→W} が線形であるとは
+
+\[
+T(x+y)=T(x)+T(y),\qquad T(\alpha x)=\alpha T(x)
+\]
+
+を満たすことです。
+
+まとめれば
+
+\[
+T(\alpha x+\beta y)=\alpha T(x)+\beta T(y)
+\]
+
+です。
+
+\hypertarget{ux306aux305cux3053ux306eux6761ux4ef6ux304cux91cdux8981ux304b}{%
+\subsection{なぜこの条件が重要か}\label{ux306aux305cux3053ux306eux6761ux4ef6ux304cux91cdux8981ux304b}}
+
+線形写像では、基底ベクトルがどこへ移るかだけ分かれば、すべてのベクトルの行き先が決まります。
+
+\[
+x=\sum_i c_i b_i
+\]
+
+なら
+
+\[
+T(x)=\sum_i c_iT(b_i)
+\]
+
+だからです。
+
+これが行列で線形写像を有限個の数として記述できる理由です。
+
+\hypertarget{ux884cux5217ux306fux57faux5e95ux4f9dux5b58}{%
+\subsection{行列は基底依存}\label{ux884cux5217ux306fux57faux5e95ux4f9dux5b58}}
+
+同じ \texttt{T}
+でも基底が変われば表現行列は変わります。しかし写像そのもののランクや固有値など、基底変換に対して本質的に保存される量があります。
+
+\end{document}

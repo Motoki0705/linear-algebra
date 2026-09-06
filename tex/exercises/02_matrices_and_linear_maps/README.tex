@@ -1,0 +1,109 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{ux6f14ux7fd2-02-ux884cux5217ux3068ux7ddaux5f62ux5199ux50cf}{%
+\section{演習 02 ---
+行列と線形写像}\label{ux6f14ux7fd2-02-ux884cux5217ux3068ux7ddaux5f62ux5199ux50cf}}
+
+\hypertarget{ux5217ux306eux4e00ux6b21ux7d50ux5408}{%
+\subsection{1.
+列の一次結合}\label{ux5217ux306eux4e00ux6b21ux7d50ux5408}}
+
+\[
+A=\begin{bmatrix}1&2\\3&4\\5&6\end{bmatrix},\quad x=\begin{bmatrix}2\\-1\end{bmatrix}
+\]
+
+について \texttt{Ax} を計算し、それを \texttt{A}
+の列ベクトルの一次結合として説明してください。
+
+\hypertarget{ux6838}{%
+\subsection{2. 核}\label{ux6838}}
+
+\[
+A=\begin{bmatrix}1&2&3\\2&4&6\end{bmatrix}
+\]
+
+の核の基底と次元を求めてください。
+
+\hypertarget{ux30e9ux30f3ux30af}{%
+\subsection{3. ランク}\label{ux30e9ux30f3ux30af}}
+
+上の \texttt{A} のランクを求め、rank-nullity theorem
+が成立することを確認してください。
+
+\hypertarget{ux5199ux50cfux306eux5408ux6210}{%
+\subsection{4. 写像の合成}\label{ux5199ux50cfux306eux5408ux6210}}
+
+\texttt{AB} が「B を先に、A
+を後に作用させる」ことを式で説明してください。また一般に \texttt{AB≠BA}
+となる理由を写像の観点から説明してください。
+
+\hypertarget{ux60c5ux5831ux640dux5931}{%
+\subsection{5. 情報損失}\label{ux60c5ux5831ux640dux5931}}
+
+\texttt{ker(A)} が非自明なら、なぜ \texttt{A}
+から入力を一意に復元できないのか証明してください。
+
+\end{document}
