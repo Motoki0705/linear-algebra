@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - '**/*.md'
+      - 'tex/**/*.tex'
+      - 'scripts/normalize_tex.py'
       - '.github/workflows/build-pdf-docs.yml'
   workflow_dispatch:
 
@@ -12,7 +13,7 @@ permissions:
   contents: write
 
 jobs:
-  convert:
+  build:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -24,74 +25,56 @@ jobs:
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
-            pandoc latexmk texlive-luatex texlive-lang-japanese \
+            latexmk texlive-luatex texlive-lang-japanese \
             texlive-latex-extra texlive-fonts-recommended poppler-utils
 
-      - name: Convert Markdown to TeX and PDF
+      - name: Normalize TeX mathematical notation
+        run: python3 scripts/normalize_tex.py
+
+      - name: Build and render-check every PDF
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf tex
-          mkdir -p tex
           count=0
-          while IFS= read -r -d '' src; do
-            rel="${src#./}"
-            pdf="${rel%.md}.pdf"
-            tex="tex/${rel%.md}.tex"
-            mkdir -p "$(dirname "$pdf")" "$(dirname "$tex")"
-
-            tmp="$(mktemp --suffix=.md)"
-            python3 -c 'import re,sys,pathlib; s=pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"); s=re.sub(r"\.md(?=(?:#[^)]*)?\))", ".pdf", s); pathlib.Path(sys.argv[2]).write_text(s, encoding="utf-8")' "$src" "$tmp"
-
-            pandoc "$tmp" \
-              --from=markdown+tex_math_dollars+tex_math_single_backslash+raw_tex+pipe_tables \
-              --to=latex \
-              --standalone \
-              --number-sections \
-              -V documentclass=ltjsarticle \
-              -V papersize=a4 \
-              -V fontsize=11pt \
-              -V geometry:margin=24mm \
-              -V colorlinks=true \
-              -V linkcolor=blue \
-              -V urlcolor=blue \
-              -o "$tex"
-            rm -f "$tmp"
-
-            build_dir="$(mktemp -d)"
-            latexmk -lualatex -interaction=nonstopmode -halt-on-error \
-              -outdir="$build_dir" "$tex"
-            built="$build_dir/$(basename "${tex%.tex}.pdf")"
-            test -s "$built"
-            cp "$built" "$pdf"
-            pdfinfo "$pdf" >/dev/null
-            pdftoppm -f 1 -singlefile -png -r 100 "$pdf" "$build_dir/render" >/dev/null 2>&1
-            test -s "$build_dir/render.png"
-            rm -rf "$build_dir"
-            rm "$src"
-            count=$((count + 1))
-          done < <(find . -type f -name '*.md' -not -path './tex/*' -not -path './.git/*' -print0)
-
-          echo "Converted $count Markdown files."
-          test "$count" -gt 0
-          test -z "$(find . -type f -name '*.md' -not -path './.git/*' -print -quit)"
-
-      - name: Verify generated document pairs
-        shell: bash
-        run: |
-          set -euo pipefail
-          pdf_count="$(find . -type f -name '*.pdf' -not -path './tex/*' | wc -l)"
-          tex_count="$(find tex -type f -name '*.tex' | wc -l)"
-          echo "PDFs: $pdf_count"
-          echo "TeX sources: $tex_count"
-          test "$pdf_count" -eq "$tex_count"
           while IFS= read -r -d '' texfile; do
             rel="${texfile#tex/}"
             pdf="${rel%.tex}.pdf"
-            test -s "$pdf"
+            mkdir -p "$(dirname "$pdf")"
+
+            build_dir="$(mktemp -d)"
+            latexmk -lualatex -interaction=nonstopmode -halt-on-error \
+              -outdir="$build_dir" "$texfile"
+            built="$build_dir/$(basename "${texfile%.tex}.pdf")"
+            test -s "$built"
+            cp "$built" "$pdf"
+
+            pdfinfo "$pdf" >/dev/null
+            pdftoppm -f 1 -singlefile -png -r 120 \
+              "$pdf" "$build_dir/render" >/dev/null 2>&1
+            test -s "$build_dir/render.png"
+            rm -rf "$build_dir"
+            count=$((count + 1))
           done < <(find tex -type f -name '*.tex' -print0)
 
-      - name: Commit generated PDFs and TeX sources
+          echo "Built and render-checked $count PDFs."
+          test "$count" -gt 0
+
+      - name: Verify source and output correspondence
+        shell: bash
+        run: |
+          set -euo pipefail
+          tex_count="$(find tex -type f -name '*.tex' | wc -l)"
+          pdf_count="$(find . -type f -name '*.pdf' -not -path './tex/*' | wc -l)"
+          md_count="$(find . -type f -name '*.md' -not -path './.git/*' | wc -l)"
+          echo "TeX: $tex_count, PDF: $pdf_count, Markdown: $md_count"
+          test "$tex_count" -eq "$pdf_count"
+          test "$md_count" -eq 0
+          while IFS= read -r -d '' texfile; do
+            rel="${texfile#tex/}"
+            test -s "${rel%.tex}.pdf"
+          done < <(find tex -type f -name '*.tex' -print0)
+
+      - name: Commit normalized sources and rebuilt PDFs
         shell: bash
         run: |
           set -euo pipefail
@@ -102,5 +85,5 @@ jobs:
             echo 'No generated changes.'
             exit 0
           fi
-          git commit -m 'docs: replace Markdown with built LaTeX PDFs'
+          git commit -m 'docs: normalize TeX math and rebuild PDFs'
           git push origin HEAD:main
