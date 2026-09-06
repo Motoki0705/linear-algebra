@@ -41,7 +41,7 @@ jobs:
             mkdir -p "$(dirname "$pdf")" "$(dirname "$tex")"
 
             tmp="$(mktemp --suffix=.md)"
-            python3 -c 'import re,sys,pathlib; s=pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"); s=re.sub(r"(?<=\\()([^\\n)]*?)\\.md(?=(?:#[^\\n)]*)?\\))", r"\\1.pdf", s); pathlib.Path(sys.argv[2]).write_text(s, encoding="utf-8")' "$src" "$tmp"
+            python3 -c 'import re,sys,pathlib; s=pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"); s=re.sub(r"\.md(?=(?:#[^)]*)?\))", ".pdf", s); pathlib.Path(sys.argv[2]).write_text(s, encoding="utf-8")' "$src" "$tmp"
 
             pandoc "$tmp" \
               --from=markdown+tex_math_dollars+tex_math_single_backslash+raw_tex+pipe_tables \
